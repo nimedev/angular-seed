@@ -9,7 +9,7 @@
   "author": "nimedev",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.13.2"
+    "express": "~4.13"
   },
   "devDependencies": {
     "del": "~1.2",
