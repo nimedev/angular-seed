@@ -1,0 +1,88 @@
+[
+  {
+    "file": "bower_components/angular-material/*.css",
+    "package": "angular-material",
+    "cdn": "https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css"
+  },
+  {
+    "file": "bower_components/bootstrap/dist/css/*.css",
+    "package": "bootstrap",
+    "cdn": "https://maxcdn.bootstrapcdn.com/bootstrap/${ major }.${ minor }.${ patch }/css/bootstrap.min.css"
+  },
+  {
+    "file": "bower_components/jquery/dist/*.js",
+    "package": "jquery",
+    "cdn": "https://ajax.googleapis.com/ajax/libs/jquery/${ version }/jquery.min.js"
+  },
+  {
+    "file": "bower_components/angular/*.js",
+    "package": "angular",
+    "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }/angular.min.js"
+  }, {
+    "file": "bower_components/angular-animate/*.js",
+    "package": "angular",
+    "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }/angular-animate.min.js"
+  }, {
+    "file": "bower_components/angular-aria/*.js",
+    "package": "angular",
+    "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }/angular-aria.min.js"
+  }, {
+    "file": "bower_components/angular-cookies/*.js",
+    "package": "angular",
+    "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }/angular-cookies.min.js"
+  }, {
+    "file": "bower_components/angular-messages/*.js",
+    "package": "angular",
+    "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }/angular-messages.min.js"
+  }, {
+    "file": "bower_components/angular-resource/*.js",
+    "package": "angular",
+    "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }/angular-resource.min.js"
+  }, {
+    "file": "bower_components/angular-route/*.js",
+    "package": "angular",
+    "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }/angular-route.min.js"
+  }, {
+    "file": "bower_components/angular-sanitize/*.js",
+    "package": "angular",
+    "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }/angular-sanitize.min.js"
+  }, {
+    "file": "bower_components/angular-touch/*.js",
+    "package": "angular",
+    "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }/angular-touch.min.js"
+  },
+  {
+    "file": "bower_components/angular-material/*.js",
+    "package": "angular-material",
+    "cdn": "https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.js"
+  }, {
+    "file": "bower_components/angular-translate/*.js",
+    "package": "angular-translate",
+    "cdn": "https://cdnjs.cloudflare.com/ajax/libs/angular-translate/${ version }/angular-translate.min.js"
+  }, {
+    "file": "bower_components/angular-translate-storage-cookie/*.js",
+    "package": "angular-translate-storage-cookie",
+    "cdn": "https://cdnjs.cloudflare.com/ajax/libs/angular-translate-storage-cookie/${ version }/angular-translate-storage-cookie.min.js"
+  }, {
+    "file": "bower_components/angular-translate-storage-local/*.js",
+    "package": "angular-translate-storage-local",
+    "cdn": "https://cdnjs.cloudflare.com/ajax/libs/angular-translate-storage-local/${ version }/angular-translate-storage-local.min.js"
+  }, {
+    "file": "bower_components/angular-translate-loader-static-files/*.js",
+    "package": "angular-translate-loader-static-files",
+    "cdn": "https://cdnjs.cloudflare.com/ajax/libs/angular-translate-loader-static-files/${ version }/angular-translate-loader-static-files.js"
+  }, {
+    "file": "bower_components/angular-translate-handler-log/*.js",
+    "package": "angular-translate-handler-log",
+    "cdn": "https://cdnjs.cloudflare.com/ajax/libs/angular-translate-handler-log/${ version }/angular-translate-handler-log.min.js"
+  }, {
+    "file": "bower_components/satellizer/*.js",
+    "package": "satellizer",
+    "cdn": "https://cdn.jsdelivr.net/satellizer/${ version }/satellizer.min.js"
+  },
+  {
+    "file": "bower_components/bootstrap/dist/js/*.js",
+    "package": "bootstrap",
+    "cdn": "https://maxcdn.bootstrapcdn.com/bootstrap/${ major }.${ minor }.${ patch }/js/bootstrap.min.js"
+  }
+]
