@@ -2,7 +2,8 @@
   "clean": [
     "dist/*",
     "!dist/.git",
-    "!dist/*.service"
+    "!dist/*.service",
+    "!dist/*.openshift"
   ],
   "back": {
     "src": [

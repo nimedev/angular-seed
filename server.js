@@ -25,5 +25,6 @@ app.get('*', function(req, res) {
 
 // START THE SERVER
 // ====================================
-app.listen(config.port);
-console.log('Magic happens on port ' + config.port);
+app.listen(config.port, config.ipAddress, function() {
+  console.log('Magic happens on port ' + config.port);
+});
