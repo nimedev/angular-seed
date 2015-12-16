@@ -1,11 +1,30 @@
+/** Main application file */
+'use strict';
+
+// Set default node environment to development
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 // BASE SETUP
 // ======================================
 
-// CALL THE PACKAGES --------------------
-var express = require('express'), // call express
-  path = require('path'),
-  config = require('./config'),
-  app = express(); // define our app using express
+/** PACKAGES */
+/**
+ * core modules
+ * @requires path
+ */
+var path = require('path');
+
+/**
+ * npm modules
+ * @requires express.
+ */
+var express = require('express'); // call express
+
+/** others modules */
+var config = require('./config');
+
+// variables
+var app = express(); // define our app using express;
 
 // APP CONFIGURATION ==================
 // ====================================
@@ -25,6 +44,6 @@ app.get('*', function(req, res) {
 
 // START THE SERVER
 // ====================================
-app.listen(config.port, config.ipAddress, function() {
-  console.log('Magic happens on port ' + config.port);
+app.listen(config.port, config.ip, function() {
+  console.log('Magic happens on port %d, in %s mode', config.port, app.get('env'));
 });

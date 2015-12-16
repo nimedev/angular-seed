@@ -1,51 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="my-angular-seed">
+<html lang="en"
+      ng-app="angular-seed">
 
 <head>
   <meta charset="UTF-8">
-  <meta content="IE=edge" http-equiv="X-UA-Compatible">
-  <meta content="width=device-width, initial-scale=1" name="viewport">
-  <meta content="" name="description">
-  <meta content="nimedev" name="author">
-  <meta content="#E9242A" name="theme-color">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="nimedev">
+  <meta name="theme-color" content="#E9242A">
   <!-- <link href="{url('/assets/img/icon.png')}" rel="icon"> -->
-  <title>My Angular Seed</title>
+  <title>Nimedev Angular Seed</title>
 
   <!-- FOR ANGULAR ROUTING -->
   <base href="/">
 
   <!-- CSS -->
-  <!-- Angular Material CSS -->
-  <link href="bower_components/angular-material/angular-material.css" rel="stylesheet">
-
-  <!-- Bootstrap core CSS -->
-  <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-
-  <!-- build:css -->
   <!-- Custom styles for this template -->
-  <link href="assets/css/styles.css" rel="stylesheet">
-  <link href="assets/css/responsive.css" rel="stylesheet">
-  <!-- endbuild -->
+  <link rel="stylesheet" href="assets/css/styles.min.css">
 
   <!-- Fonts -->
 </head>
 
 <body>
-  <div id="main-wrapper">
-    <!-- NAVBAR -->
-    <!-- <header ng-include="'app/shared/header/headerView.html'"></header> -->
-
-    <!-- ANGULAR VIEWS -->
-    <div class="view-content" ng-view></div>
-
-    <!-- FOOTER -->
-    <!-- <footer ng-include="'app/shared/footer/footerView.html'"></footer> -->
-  </div>
+  <header app-header></header>
+  <!-- ANGULAR VIEWS -->
+  <div class="view-wrapper" ng-view></div>
 
   <!-- JS -->
-  <!-- jQuery -->
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-
   <!-- load angular and modules CDN -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-animate/angular-animate.js"></script>
@@ -55,37 +37,16 @@
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-  <script src="bower_components/angular-touch/angular-touch.js"></script>
 
   <!-- load  local angular comunity modules -->
-  <script src="bower_components/angular-material/angular-material.js"></script>
   <script src="bower_components/angular-translate/angular-translate.js"></script>
   <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
   <script src="bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
   <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
   <script src="bower_components/angular-translate-handler-log/angular-translate-handler-log.js"></script>
-  <script src="bower_components/satellizer/satellizer.js"></script>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-
-  <!-- build:js -->
-
-  <!-- main Angular app files (app.js file most be first)-->
-  <script src="app/i18n/locale.js"></script>
-  <script src="app/app.js"></script>
-  <script src="app/app.routes.js"></script>
-  <!-- components -->
-
-  <!-- shared components -->
-
-  <!-- shared controllers -->
-
-  <!-- shared directives -->
-
-  <!-- shared services -->
-
-  <!-- endbuild -->
+  <!-- custom scripts -->
+  <script src="assets/js/main.min.js"></script>
 
 </body>
 

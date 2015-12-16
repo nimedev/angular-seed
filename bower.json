@@ -1,6 +1,6 @@
 {
-  "name": "my-angular-seed",
-  "version": "0.0.1",
+  "name": "angular-seed",
+  "version": "1.0.0",
   "authors": [
     "nimedev <nicolasmejiaco@gmail.com>"
   ],
@@ -14,23 +14,18 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "jquery": "~2.1",
-    "angular": "~1.4",
-    "angular-animate": "~1.4",
-    "angular-aria": "~1.4",
-    "angular-cookies": "~1.4",
-    "angular-messages": "~1.4",
-    "angular-resource": "~1.4",
-    "angular-route": "~1.4",
-    "angular-sanitize": "~1.4",
-    "angular-touch": "~1.4",
-    "angular-material": "~0.10",
-    "angular-translate": "~2.7",
-    "angular-translate-storage-cookie": "~2.7",
-    "angular-translate-storage-local": "~2.7",
-    "angular-translate-loader-static-files": "~2.7",
-    "angular-translate-handler-log": "~2.7",
-    "satellizer": "~0.11",
-    "bootstrap": "~3.3"
+    "angular": "^1.4.6",
+    "angular-animate": "^1.4.6",
+    "angular-aria": "^1.4.6",
+    "angular-cookies": "^1.4.6",
+    "angular-messages": "^1.4.6",
+    "angular-resource": "^1.4.6",
+    "angular-route": "^1.4.6",
+    "angular-sanitize": "^1.4.6",
+    "angular-translate": "^2.8.0",
+    "angular-translate-storage-cookie": "^2.8.0",
+    "angular-translate-storage-local": "^2.8.0",
+    "angular-translate-loader-static-files": "^2.8.0",
+    "angular-translate-handler-log": "^2.8.0"
   }
 }

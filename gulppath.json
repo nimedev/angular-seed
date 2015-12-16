@@ -1,0 +1,59 @@
+{
+  "clean": [
+    "dist/*",
+    "!dist/.git*",
+    "!dist/*.service",
+    "!dist/*.openshift",
+    "!dist/*.sh"
+  ],
+  "back": {
+    "src": [
+      "app*/**/*",
+      "config.js",
+      "package.json",
+      "server.js"
+    ],
+    "dest": "dist"
+  },
+  "front": {
+    "src": {
+      "images": "public/assets/img/**/*",
+      "html": [
+        "public/**/*.html",
+        "!public/bower_components/**/*.html"
+      ],
+      "others": [
+        "public/app*/**/*.json"
+      ],
+      "scripts": [
+        "public/app/i18n/*.js",
+        "public/app/**/*.module.js",
+        "public/app/**/*.js",
+        "public/assets/**/*.js",
+        "!public/assets/js/main.min.js"
+      ],
+      "styles": [
+        "public/assets/scss/styles.scss",
+        "public/assets/scss/**/*.scss"
+      ]
+    },
+    "dest": {
+      "images": "dist/public/assets/img",
+      "html": "dist/public",
+      "others": "dist/public",
+      "scripts": "dist/public/assets/js",
+      "styles": "dist/public/assets/css"
+    },
+    "watch": {
+      "src": [
+        "public/**/*",
+        "!public/assets/js/main.min.js",
+        "!public/assets/css/styles.min.js"
+      ],
+      "dest": {
+        "scripts": "public/assets/js",
+        "styles": "public/assets/css"
+      }
+    }
+  }
+}
