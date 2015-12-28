@@ -1,5 +1,5 @@
 /** config component for route of app. */
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -22,7 +22,7 @@
       .when('/', {
         template: '<app-home-view></app-home-view>'
       })
-      // redirect path
+    // redirect path
       .otherwise({
         redirectTo: '/'
       });

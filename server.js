@@ -38,12 +38,12 @@ app.use('/', express.static(__dirname + '/public'));
 
 // MAIN CATCHALL ROUTE ---------------
 // SEND USERS TO FRONTEND ------------
-app.get('*', function(req, res) {
+app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
 // START THE SERVER
 // ====================================
-app.listen(config.port, config.ip, function() {
+app.listen(config.port, config.ip, function () {
   console.log('Magic happens on port %d, in %s mode', config.port, app.get('env'));
 });
