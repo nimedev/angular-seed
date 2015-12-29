@@ -25,9 +25,9 @@ var runSequence = require('run-sequence');
 var uglify = require('gulp-uglify');
 
 /** others modules. */
-var cdnizerArray = require('./cdnizer');
 var config = require('./gulpconfig');
 var expressConfig = require('./config');
+var cdnizerArray = config.cdnizer;
 var paths = config.paths;
 
 /** Config de autoprefixer. */
