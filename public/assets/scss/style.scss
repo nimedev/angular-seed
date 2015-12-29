@@ -1,0 +1,51 @@
+/*------------------------------------*\
+    $STYLE
+\*------------------------------------*/
+/**
+ * Include here all modules (.scss files) to compile in
+ * in final css: /assets/css/style.min.css.
+ */
+
+/**
+ * Libraries
+ **/
+@import "lib/settings.scss";
+@import "lib/mixins.scss";
+/*@import "lib/funciones.scss";
+@import "lib/flex.scss";
+@import "lib/placeholders.scss";*/
+
+
+/**
+ * Bases
+ **/
+// @import "base/contenido.scss";
+@import "base/reset.scss";
+@import "base/debug.scss";
+
+
+/**
+ * Selectores de elemento: un super "normalize":
+ **/
+/*@import "elementos/figure.scss";
+@import "elementos/formularios.scss";
+@import "elementos/imagenes.scss";
+@import "elementos/links.scss";
+@import "elementos/tipografia.scss";
+@import "elementos/tablas.scss";*/
+
+/**
+ * Site layout
+ **/
+@import "layout/site.scss";
+// @import "layout/navegacion.scss";
+
+/**
+ * Abstracciones y objetos
+ **/
+/*@import "abstracciones/botones.scss";
+@import "abstracciones/fonticon.scss";
+@import "abstracciones/grid.scss";
+@import "abstracciones/paginacion.scss";
+@import "abstracciones/texturas.scss";
+@import "abstracciones/abstracciones.scss";*/

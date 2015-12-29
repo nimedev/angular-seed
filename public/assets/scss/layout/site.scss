@@ -1,0 +1,109 @@
+/*------------------------------------*\
+    $SITE
+\*------------------------------------*/
+
+
+@-webkit-viewport {
+	width: device-width;
+}
+
+@-moz-viewport {
+	width: device-width;
+}
+
+@-ms-viewport {
+	width: device-width;
+}
+
+@-o-viewport {
+	width: device-width;
+}
+
+@viewport {
+	width: device-width;
+}
+
+html {
+  // Box-model
+  height: 100%;
+  
+  // Typography
+	font-size: 87.5%;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+  
+  // visual
+  background: $background;
+  
+  // Misc
+	-webkit-overflow-scrolling: touch;
+	-webkit-tap-highlight-color: transparent;
+}
+
+body {
+  // Box-model
+  margin: 0;
+	padding: 0;
+	width: 100%;
+  
+  // Typography
+	font-family: $basefont;
+	line-height: $baselineheight;
+	color: $textcolor;
+  
+  // visual
+	background-color: transparent;
+}
+
+/**
+* A partir de aquí es donde debes escribir los estilos de posicionamiento
+* y detalles que forman tu web. Disfruta!
+*/
+
+.app-container {
+  // Box-model
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.app-header,
+.app-footer, {
+  flex: none;
+}
+
+.app-body {
+  // Box-model
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  
+  // Responsive
+  @include respond-to("medium") {
+    flex-direction: row;
+  }
+}
+
+.app-content {
+  background: blue;
+  
+  // Responsive
+  @include respond-to("medium") {
+    flex: 1;
+  }
+}
+
+
+.app-nav {
+  order: -1;
+}
+
+.app-nav,
+.app-ads {
+  background: white;
+  
+  // Responsive
+  @include respond-to("medium") {
+    flex: 0 0 12em;
+  }
+}

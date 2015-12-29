@@ -16,15 +16,17 @@
 
   <!-- CSS -->
   <!-- Custom styles for this template -->
-  <link rel="stylesheet" href="assets/css/styles.min.css">
+  <link rel="stylesheet" href="assets/css/style.min.css">
 
   <!-- Fonts -->
 </head>
 
-<body>
-  <header app-header></header>
-  <!-- ANGULAR VIEWS -->
-  <div class="view-wrapper" ng-view></div>
+<body class="app-container">
+  <header class="app-header" app-header></header>
+  <div class="app-body">
+    <main class="app-content" ng-view></main>
+    <nav class="app-nav"></nav>
+  </div>
 
   <!-- JS -->
   <!-- load angular and modules CDN -->

@@ -7,33 +7,47 @@
 var fs = require('fs');
 
 /** npm modules */
+var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
 var cdnizer = require('gulp-cdnizer');
 var concat = require('gulp-concat');
 var del = require('del');
 var gulp = require('gulp');
+var gulpif = require('gulp-if');
 var htmlReplace = require('gulp-html-replace');
 // var jshint = require('gulp-jshint');
 var minifyCss = require('gulp-minify-css');
 var minifyHtml = require('gulp-minify-html');
+var mmq = require('gulp-merge-media-queries');
+var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var runSequence = require('run-sequence');
 var uglify = require('gulp-uglify');
 
-/** others modules */
+/** others modules. */
 var cdnizerArray = require('./cdnizer');
-var config = require('./config');
-var paths = require('./gulppath');
+var config = require('./gulpconfig');
+var expressConfig = require('./config');
+var paths = config.paths;
 
-/** CLEAN TASKS */
+/** Config de autoprefixer. */
+var AUTOPREFIXER_BROWSERS = ['ie >= 9', 'ie_mob >= 10', 'ff >= 30', 'chrome >= 34', 'safari >= 7', 'opera >= 23', 'ios >= 7', 'android >= 4.4', 'bb >= 10']; // Compatibilidad css
+
+
+/**
+ * CLEAN TASKS 
+ */
 /** clean output directory */
-gulp.task('clean', function() {
+gulp.task('clean', function () {
   del.sync(paths.clean);
 });
 
-/** BACK-END TASKS */
+
+/** 
+ * BACK-END TASKS
+ */
 /** copy only necesary files for back-end */
-gulp.task('copy-back', function() {
+gulp.task('copy-back', function () {
   return gulp.src(paths.back.src)
     .pipe(gulp.dest(paths.back.dest));
 });
@@ -41,16 +55,19 @@ gulp.task('copy-back', function() {
 /** build back-end */
 gulp.task('build-back', ['copy-back']);
 
-/** FRONT-END TASKS */
+
+/** 
+ * FRONT-END TASKS
+ */
 /** copy images */
-gulp.task('images', function() {
+gulp.task('images', function () {
   return gulp.src(paths.front.src.images)
-    // .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
+  // .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
     .pipe(gulp.dest(paths.front.dest.images));
 });
 
 /** build html */
-gulp.task('html', function() {
+gulp.task('html', function () {
   var opts = {
     conditionals: true,
     spare: true
@@ -68,48 +85,51 @@ gulp.task('html', function() {
 });
 
 /** copy front-end files that not are html, css, img or js  */
-gulp.task('others', function() {
+gulp.task('others', function () {
   return gulp.src(paths.front.src.others)
     .pipe(gulp.dest(paths.front.dest.others));
 });
 
 /** put all *.js files in one min.js file in dist dir */
-gulp.task('scripts', function() {
+gulp.task('scripts', function () {
   return scripts(paths.front.dest.scripts);
 });
 
 /** put all *.scss files in one min.css file and compile in dist dir  */
-gulp.task('styles', function() {
+gulp.task('styles', function () {
   return styles(paths.front.dest.styles);
 });
 
 /** build all front-end */
 gulp.task('build-front', ['images', 'html', 'others', 'scripts', 'styles']);
 
-/** WATCH AND RELOAD TASKS */
+
+/** 
+ * WATCH AND RELOAD TASKS 
+ */
 /** put all *.js files in one min.js file in source dir*/
-gulp.task('watch-scripts', function() {
+gulp.task('watch-scripts', function () {
   return scripts(paths.front.watch.dest.scripts, {
     normal: true
   });
 });
 
 /** put all *.scss files in one min.css file and compile in source dir */
-gulp.task('watch-styles', function() {
+gulp.task('watch-styles', function () {
   return styles(paths.front.watch.dest.styles);
 });
 
 /** watch scripts and styles */
-gulp.task('watch', ['watch-scripts', 'watch-styles'], function() {
+gulp.task('watch', ['watch-scripts', 'watch-styles'], function () {
   // watch for changes in script files
   gulp.watch(paths.front.src.scripts, ['watch-scripts']);
 
   // watch for changes in styles files
-  gulp.watch(paths.front.src.styles, ['watch-styles']);
+  gulp.watch(paths.front.src.sass, ['watch-styles']);
 });
 
 /** put all *.js files in one min.js file in source dir and reload browser */
-gulp.task('reload-scripts', function() {
+gulp.task('reload-scripts', function () {
   return scripts(paths.front.watch.dest.scripts, {
     normal: true,
     reload: true
@@ -117,18 +137,18 @@ gulp.task('reload-scripts', function() {
 });
 
 /** put all *.scss files in one min.css file and compile in source dir and reload browser */
-gulp.task('reload-styles', function() {
+gulp.task('reload-styles', function () {
   return styles(paths.front.watch.dest.styles, {
     reload: true
   });
 });
 
 /** watch with browser reload */
-gulp.task('server', ['watch-scripts', 'watch-styles'], function() {
+gulp.task('server', ['watch-scripts', 'watch-styles'], function () {
   // config browser-sync module
   browserSync.init({
     open: false,
-    port: config.port,
+    port: expressConfig.port,
     server: {
       baseDir: './public',
       middleware: serverMiddleware
@@ -139,17 +159,21 @@ gulp.task('server', ['watch-scripts', 'watch-styles'], function() {
   gulp.watch(paths.front.src.scripts, ['reload-scripts']);
 
   // watch for changes in styles files
-  gulp.watch(paths.front.src.styles, ['reload-styles']);
+  gulp.watch(paths.front.src.sass, ['reload-styles']);
 
   // watch for changes to reload browsers
   gulp.watch(paths.front.watch.src).on('change', browserSync.reload);
 });
 
-/** DEFAULT TASK */
-gulp.task('default', function(cb) {
+
+/** 
+ * DEFAULT TASK 
+ */
+gulp.task('default', function (cb) {
   del.sync(paths.clean);
   runSequence(['copy-back', 'build-front'], cb);
 });
+
 
 /** HELPER FUNCTIONS */
 /**
@@ -160,8 +184,8 @@ gulp.task('default', function(cb) {
  */
 function scripts(dest, options) {
   var task = gulp.src(paths.front.src.scripts)
-    // .pipe(jshint('.jshintrc'))
-    // .pipe(jshint.reporter('default'))
+  // .pipe(jshint('.jshintrc'))
+  // .pipe(jshint.reporter('default'))
     .pipe(concat('main.min.js'));
 
   // check if uglify
@@ -192,7 +216,7 @@ function serverMiddleware(req, res, next) {
   var lastArray;
 
   // split last element of the url array by '.' to detect if is a file  request
-  var lastArray = urlArray[urlArray.length - 1].split('.');
+  lastArray = urlArray[urlArray.length - 1].split('.');
 
   // if the last element is a file (containt more than one elements)...
   if (lastArray.length > 1) {
@@ -201,7 +225,7 @@ function serverMiddleware(req, res, next) {
 
   // otherwise, re-direct to index.html
   console.log('redirect...');
-  fs.readFile('./public/index.html', function(err, contents) {
+  fs.readFile('./public/index.html', function (err, contents) {
     // if the fileRead was successful...
     if (!err) {
       res.writeHeader(200, {
@@ -228,9 +252,14 @@ function serverMiddleware(req, res, next) {
  */
 function styles(dest, options) {
   var task = gulp.src(paths.front.src.styles)
-    .pipe(concat('styles.min.css'))
-    .pipe(sass().on('error', sass.logError))
-    .pipe(minifyCss())
+    .pipe(sass().on('error', function (err) {
+      console.log(err.toString());
+      this.emit('end');
+    }))
+    .pipe(gulpif(config.autoprefixer, autoprefixer({ browsers: AUTOPREFIXER_BROWSERS })))
+    .pipe(gulpif(config.mergeMediaQueries, mmq()))
+    .pipe(gulpif(config.minifyCss, minifyCss()))
+    .pipe(rename('style.min.css'))
     .pipe(gulp.dest(dest));
 
   // check if reload browser
