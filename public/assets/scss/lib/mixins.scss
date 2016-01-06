@@ -1,20 +1,20 @@
 /*------------------------------------*\
     $MIXINS
 \*------------------------------------*/
-/** 
+
+/**
  * Fácil de usar: las variables a usar están en settings.scss y son:
     'small'  : 48em,
     'medium' : 56.25em,
     'large'  : 68.75em,
-* Y el uso va como sigue:
+ * Y el uso va como sigue:
 .foo {
   color: red;
   @include respond-to('small') {
     color: blue;
   }
 }
-*/
-
+ */
 @mixin respond-to($mq-breakpoint, $mq-breakpoints: $breakpoints) {
 	// If $mq-breakpoint is a key that exists in
 	// $mq-breakpoints, get and use the value
@@ -40,10 +40,9 @@
 		@content;
 	}
 }
-
-/**
- * Centrar y dar un ancho máximo igual a $pagemaxwidth.
- */
+  /**
+  * Centrar y dar un ancho máximo igual a $pagemaxwidth.
+  */
 @mixin max-width($max-width : $pagemaxwidth)  {
 	margin-left:auto;
 	margin-right:auto;
@@ -51,6 +50,11 @@
 	width:100%;
 }
 
+@mixin full-centered() {
+	width: 100%;
+    padding-left: calc((100% - #{$pagemaxwidth}) / 2);
+    padding-right: calc((100% - #{$pagemaxwidth}) / 2);
+}
 
 // gradients
 @mixin horizontal($startColor : $white, $endColor : $lightergrey) {
@@ -185,6 +189,7 @@
 	transform : translate3d($x, $y, $z);
 }
 
+
 // .background-alpha(VALUE VALUE);
 @mixin background-alpha($color: $white, $alpha: 1) {
 	background-color : hsla(hue($color), saturation($color), lightness($color), $alpha);
@@ -213,13 +218,16 @@
 	box-sizing : $boxsize;
 }
 
+
 // .resize(VALUE) (none, both, horizontal, vertical, inherit)
+
 @mixin resize($direction: both) {
 	resize : $direction;
 	overflow : auto;
 }
 
 // .userselect(VALUE) (all, element, none, text)
+
 @mixin user-select($select) {
 	-webkit-user-select : $select;
 	-moz-user-select : $select;
@@ -227,7 +235,12 @@
 	user-select : $select;
 }
 
+
+
+
+
 // .columns(250px, 0, 24px, COLOR, solid, 1px)
+
 @mixin columns($colwidth: 250px, $colcount: 0, $colgap: 50px, $columnRuleColor: #eee, $columnRuleStyle: solid, $columnRuleWidth: 1px) {
 	-webkit-column-width : $colwidth;
 	-webkit-column-count : $colcount;
@@ -256,10 +269,10 @@
 //   `@include vendor(border-radius, 4px);`
 //
 //
-@mixin vendor($property, $value...) {
-  -webkit-#{$property}:$value;
-     -moz-#{$property}:$value;
-      -ms-#{$property}:$value;
-       -o-#{$property}:$value;
-          #{$property}:$value;
+@mixin vendor($property, $value...){
+    -webkit-#{$property}:$value;
+       -moz-#{$property}:$value;
+        -ms-#{$property}:$value;
+         -o-#{$property}:$value;
+            #{$property}:$value;
 }

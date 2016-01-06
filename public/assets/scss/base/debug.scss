@@ -1,3 +1,4 @@
+@if $include-debug == true {
 /*------------------------------------*\
     $DEBUG
 \*------------------------------------*/
@@ -13,7 +14,6 @@
  * para validar tu marcado
  *
  */
-@if $include-debug == true {
 
 
 /**
@@ -22,7 +22,6 @@
 :empty {
   outline:5px solid yellow;
 }
-
 
 /**
  * Las imágenes requieren el atributo ALT, un ALT vacío no es del todo malo
@@ -38,7 +37,6 @@ img[alt=""] {
   outline:5px solid yellow;
 }
 
-
 /**
  * Los links algunas veces, no siempre, se benefician del atributo "title".
  * Links sin 'title' no son inválidos, pero es buena idea revisar.
@@ -50,7 +48,6 @@ a[title] {
   outline:none;
 }
 
-
 /**
  * Revisa los "href" con contenido dudoso.
  */
@@ -59,7 +56,6 @@ a[href*="javascript"] {
   outline:5px solid yellow;
 }
 
-
 /**
  * El atributo 'target=""' es.... bueno, revisa.
  */
@@ -67,17 +63,15 @@ a[target] {
   outline:5px solid yellow;
 }
 
-
 /**
  * Asegúrate que una lista solo anida LI's
  */
 ul,
 ol {
-  > *:not(li){
+  > *:not(li) {
     outline:5px solid red;
   }
 }
-
 
 /**
  * Deberíamos asignar un atributo 'scope' a los th
@@ -90,7 +84,6 @@ th[scope] {
   outline:none;
 }
 
-
 /**
  * los tr hijos de 'table' no son buenos, ¿necesitabas un 'thead' / 'tbody'?
  */
@@ -98,14 +91,12 @@ table > tr {
   outline:5px solid yellow;
 }
 
-
 /**
  * `tfoot` debe estar *antes* de `tbody`.
  */
 tbody + tfoot {
   outline:5px solid yellow;
 }
-
 
 /**
  * Forms necesitan del atributo `action`
@@ -116,7 +107,6 @@ form {
 form[action] {
   outline:none;
 }
-
 
 /**
  * Varios elementos de formularios requieren atributos. 'input' necsita de 'type'
@@ -139,14 +129,12 @@ input[type=submit][value] {
   outline:none;
 }
 
-
 /**
  * Evitamos estilos _inline_ a ser posible.
  */
 [style] {
   outline:5px solid yellow;
 }
-
 
 /**
  * Deberías evitar IDs para CSS.

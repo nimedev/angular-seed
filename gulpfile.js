@@ -11,13 +11,13 @@ var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
 var cdnizer = require('gulp-cdnizer');
 var concat = require('gulp-concat');
+var cssnano = require('gulp-cssnano');
 var del = require('del');
 var gulp = require('gulp');
 var gulpif = require('gulp-if');
+var htmlmin = require('gulp-htmlmin');
 var htmlReplace = require('gulp-html-replace');
 // var jshint = require('gulp-jshint');
-var minifyCss = require('gulp-minify-css');
-var minifyHtml = require('gulp-minify-html');
 var mmq = require('gulp-merge-media-queries');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
@@ -69,8 +69,8 @@ gulp.task('images', function () {
 /** build html */
 gulp.task('html', function () {
   var opts = {
-    conditionals: true,
-    spare: true
+    collapseWhitespace: true,
+    removeComments: true
   };
   return gulp.src(paths.front.src.html)
     .pipe(htmlReplace({
@@ -80,7 +80,7 @@ gulp.task('html', function () {
       }
     }))
     .pipe(cdnizer(cdnizerArray))
-    .pipe(minifyHtml(opts))
+    .pipe(htmlmin(opts))
     .pipe(gulp.dest(paths.front.dest.html));
 });
 
@@ -258,7 +258,7 @@ function styles(dest, options) {
     }))
     .pipe(gulpif(config.autoprefixer, autoprefixer({ browsers: AUTOPREFIXER_BROWSERS })))
     .pipe(gulpif(config.mergeMediaQueries, mmq()))
-    .pipe(gulpif(config.minifyCss, minifyCss()))
+    .pipe(gulpif(config.minifyCss, cssnano()))
     .pipe(rename('style.min.css'))
     .pipe(gulp.dest(dest));
 

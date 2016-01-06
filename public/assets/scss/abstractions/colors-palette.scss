@@ -1,0 +1,87 @@
+/*------------------------------------*\
+    $COLORS PALETTE
+\*------------------------------------*/
+
+/**
+ * Generate classes to use primary palette for background-color
+ * property. Use: 
+    <a class="bc-primary-h1"></a>
+ */
+@each $hue, $color in $primary {
+  $class: ".bc-primary-#{$hue}";
+  #{$class}, .btn#{$class} {
+    background-color: $color;
+  }
+} 
+
+/**
+ * Generate classes to use accent palette for background-color
+ * property. Use: 
+    <a class="bc-accent-h1"></a>
+ */
+@each $hue, $color in $accent {
+  $class: ".bc-accent-#{$hue}";
+  #{$class}, .btn#{$class} {
+    background-color: $color;
+  }
+} 
+
+/**
+ * Generate classes to use warn palette for background-color
+ * property. Use: 
+    <a class="bc-warn-df"></a>
+ */
+@each $hue, $color in $warn {
+  $class: ".btn.bc-warn-#{$hue}";
+  #{$class}, .btn#{$class} {
+    background-color: $color;
+  }
+}
+
+/**
+ * Generate classes to use primary palette for color
+ * property. Use: 
+    <a class="clr-primary-df"></a>
+ */
+@each $hue, $color in $primary {
+  $class: ".clr-primary-#{$hue}";
+  #{$class}, .btn#{$class} {
+    color: $color;
+    
+    &:visited {
+      color: $color;
+    }
+  }
+}
+
+/**
+ * Generate classes to use accent palette for color
+ * property. Use: 
+    <a class="clr-accent-h2"></a>
+ */
+@each $hue, $color in $accent {
+  $class: ".clr-accent-#{$hue}";
+  #{$class}, .btn#{$class} {
+    color: $color;
+    
+    &:visited {
+      color: $color;
+    }
+  }
+}
+
+/**
+ * Generate classes to use warn palette for color
+ * property. Use: 
+    <a class="clr-warn-h3"></a>
+ */
+@each $hue, $color in $warn {
+  $class: ".clr-warn-#{$hue}";
+  #{$class}, .btn#{$class} {
+    color: $color;
+    
+    &:visited {
+      color: $color;
+    }
+  }
+}

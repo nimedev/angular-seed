@@ -1,0 +1,33 @@
+/*------------------------------------*\
+    $FUNCTIONS
+\*------------------------------------*/
+/**
+ * Get z-index from map.
+  .selector { z-index: z(goku);}
+ * compile:
+	.selector { z-index: 9001;}
+ * The variables are in settings.scss
+ */
+@function z($layer) {
+  @return map-get($z-layers, $layer);
+}
+
+
+/**
+ * Get font size from map and apply rem.
+  .selector { font-size: fs(x-small);}
+ * The variables are in settings.scss
+ */
+@function fs($font-size) {
+  @return map-get($size-vars, $font-size) * 1rem;
+}
+
+
+/**
+ * Get color from map.
+  .selector { background-color: cp($accent, h1);}
+ * The variables are in settings.scss
+ */
+@function cp($palette, $color) {
+  @return map-get($palette, $color);
+}

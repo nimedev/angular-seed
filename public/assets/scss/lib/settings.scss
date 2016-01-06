@@ -7,29 +7,45 @@
 
 
 /*------------------------------------*\
-    $OBJETOS Y ABSTRACCIONES
+    $OBJECTS Y ABSTRACTIONS
 \*------------------------------------*/
 /**
- * Qué objetos y abstracciones vamos a usar? (true: se usa, false: no se usa)
+ * true: use, false: don't use.
  */
 
 // $incluir-grid:          false!default;
-// $incluir-botones:       false!default;
-// $incluir-navegacion:    false!default;
+$include-buttons:  true!default;
+// $incluir-navegacion:    true!default;
 // $incluir-paginacion:    false!default;
-// $incluir-tablas:        false!default;
-// $incluir-texturas:      false!default;
-// $incluir-flexbox:       false!default;
+$include-tables:   false!default;
+// $incluir-texturas:      true!default;
+// $incluir-flexbox:       true!default;
 // $incluir-fonticon:      false!default;
-// $incluir-abstracciones: false!default;
-// $incluir-imgclass:      false!default;
-$include-debug:         false!default;
+// $incluir-abstracciones: true!default;
+// $incluir-news:          false!default;
+// $incluir-likes:          false!default;
+// $incluir-video:          false!default;
+// $incluir-share:          false!default;
+// $incluir-userdata:       false!default;
+// $incluir-comments:       false!default;
+// $incluir-admin:          false!default;
+// $incluir-encabezados:    false!default;
+// $incluir-footer:         false!default;
+// $incluir-cookies:         false!default;
+// $incluir-slide:           false!default;
+// $incluir-error:           false!default;
+// $incluir-checkbox-list:  false!default;
+$include-imgclass: false!default;
+$include-debug:    false!default;
 
 /**
  *
- * Definimos y configuramos las variables CSS que vamos a utilizar
+ * Define and configure the CSS variables that we will use
  *
  */
+ 
+ 
+ 
 
 
 /*------------------------------------*\
@@ -37,22 +53,25 @@ $include-debug:         false!default;
 \*------------------------------------*/
 /**
  * "Start with the small screen first, then expand until it looks like shit. Time to insert a breakpoint!"
- * Lo usamos con el mixin respond-to($breakpoint):
-.text {
-  color: pink;
-  @include respond-to(medium) {
-    color: maroon;
-  }
-}
+ * Use with the mixin respond-to($breakpoint):
+    .text {
+      color: pink;
+      @include respond-to(medium) {
+        color: maroon;
+      }
+    }
  *
  */
 
 $breakpoints: (
-  'small':  600px,
-  'medium': 960px,
-  'large':  1280px,
-  'xlarge': 1920px
+  'xsmall': 30em,
+  'small':  37.5em,
+  'medium': 60em,
+  'large':  80em,
+  'xlarge': 120em
 ) !default;
+
+// To implement "retina" only use "retina" as variable in the mixin.
 
 
 
@@ -62,11 +81,11 @@ $breakpoints: (
     $Z-INDEX
 \*------------------------------------*/
 /**
- * Podemos controlar los z-index con variables más reconocibles.
- * Para usarlo, implementamos la función z($layers):
- .element {
-  z-index: z(goku);
- }
+ * Control z-index with variables.
+ * To use, implement function z($layers):
+    .element {
+      z-index: z(goku);
+    }
  *
  */
 
@@ -88,21 +107,23 @@ $z-layers: (
 /**
  * Con agregar esta variable a las imágenes declaradas en CSS apañamos:
  */
-$image-dir: "../img";
+$image-dir: "/Content/img";
 
- //Use: background-image:url("#{$image-dir}/btn.jpg");
-
-/*
- * Igual para las fuentes
+/**
+ * Use: background-image:url("#{$image-dir}/btn.jpg");
  */
 
-$font-dir: "../fonts";
-/*
- *   src:url('#{$font-dir}/icomoon.eot');
- *   src:url('#{$font-dir}/icomoon.eot?#iefix') format('embedded-opentype'),
- *   url('#{$font-dir}/icomoon.woff') format('woff'),
- *   url('#{$font-dir}/icomoon.ttf') format('truetype'),
- *   url('#{$font-dir}/icomoon.svg#icomoon') format('svg');
+/**
+ * Igual para las fuentes
+ */
+$font-dir: "/Content/fonts";
+/**
+ * Use:
+ *  src:url('#{$font-dir}/icomoon.eot');
+ *  src:url('#{$font-dir}/icomoon.eot?#iefix') format('embedded-opentype'),
+ *  url('#{$font-dir}/icomoon.woff') format('woff'),
+ *  url('#{$font-dir}/icomoon.ttf') format('truetype'),
+ *  url('#{$font-dir}/icomoon.svg#icomoon') format('svg');
  */
 
 
@@ -113,25 +134,37 @@ $font-dir: "../fonts";
     $LAYOUT
 \*------------------------------------*/
 /**
- * define constants elements of layout
+ * constant elements of layout
  */
-$baselineheight: 1em;
-$baseline: $baselineheight;
-$gutterwidth: 24px;
-$pagemaxwidth: 860px;
-$radius: 3px;
+$baselineheight:  1.5em;
+$baseline:        $baselineheight;
+$gutterwidth:     22px;
+$pagemaxwidth:    960px;
+$radius:          0;
 $hovertransition: .3s;
-$animationtime: .8s;
+$animationtime:   .8s;
+
+// header
+$headermargin-xs: .5rem;
+$headermargin-sm: 1.25rem;
+$header-xs: 3.5rem;
+$header-sm: 4rem;
+$logopadding: 0;
+
+// footer
+$footerheight-xs: 144px;
+$footerheight-sm: 144px;
+$footerheight-md: 72px;
 
 
 
 
 
 /*------------------------------------*\
-    $grid
+    $GRID
 \*------------------------------------*/
-$gap: 5px;
-$grid-size: 3;
+$gap: 22px;
+$grid-size: 12;
 
 
 
@@ -141,18 +174,18 @@ $grid-size: 3;
     $FONT-FACE
 \*------------------------------------*/
 /**
- * Definimos las fuentes a utilizar:
- * $basefont para todos los textos inline
- * $altfont para textos alternativos, como citas, intro, etc...
- * $codefont para código
+ * Fonts to use:
+ * $basefont to inline texts.
+ * $altfont to alternative texts, like appointments, intro, etc...
+ * $codefont for code.
  */
-$basefont: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$altfont: Georgia, Times, "Times New Roman";
+$basefont: Lato, Helvetica, "Roboto Slab", "Droid Serif", "Segoe UI Bold", sans-serif;
+$altfont:  Georgia, Times, "Times New Roman";
 $codefont: "Courier New", monospace;
-$baseheadingfont: $altfont;
 
-$baseheadingfontweight: normal;
-$baseheadingfontcolor: inherit;
+$baseheadingfont:       inherit;
+$baseheadingfontweight: 300;
+$baseheadingfontcolor:  inherit;
 
 $altlineheight: 1.35em;
 
@@ -164,25 +197,32 @@ $altlineheight: 1.35em;
     $SIZES
 \*------------------------------------*/
 /**
- * Definimos los tamaños de fuentes:
+ * Fonts sizes:
  */
-$basefontsize: 16;
+$basefontsize: 10px;
 
-
-/*
+/**
  * Las variables de tamaño las definimos en un MAP, puedes añadir, quitar o cambiarlas.
  * Vienen dadas en REM. Esto creará una clase con el mismo nombre de la variable:
-  .x-small { font-size: .8rem}
+    .x-small { 
+      font-size: .8rem;
+    }
  * También podemos asignar tamaños con un función llamada fs:
-    .selector { font-size: fs(x-small);}
+    .selector {
+      font-size: fs(x-small);
+    }
  *
  */
 $size-vars: (
-  "x-small"  :    .6,
-  "small"    :    .8,
-  "normal"   :    1,
-  "big"      :    1.5,
-  "huge"     :    2
+  "xx-small":  .625,
+  "x-small":   .75,
+  "small":     .875,
+  "normal":    1,
+  "medium":    1.25,
+  "big":       1.5,
+  "huge":      2.125,
+  "extreme":   2.8125,
+  "x-extreme": 3.5
 );
 
 
@@ -195,142 +235,241 @@ $size-vars: (
 /**
  * Brand stuff
  */
-$basecolor      : rgb(187, 34, 153);
-$basecolor-light: lighten($basecolor, 25%);
-$secondary      : rgb(219,216,121); // Rojo CoolVillage
-$bordercolor    : lighten($secondary, 20); // Verde Bordes
-$compcolor      : rgb(216,240,227); //
+$basecolor:     #A93667; // Morado
+$basecolor-light: lighten($basecolor, 5%);
+$secondary:     #c2d9d3; // Bleu
+$bordercolor:   #ebebeb;
+$compcolor:     rgb(216,240,227); //
 
 /**
- * Escala de grises
- * A veces no queremos que el negro sea "negro" o el blanco "blanco", puedes cambiarlos.
+ * Grayscale
  */
-$black 			  : rgb(0,0,0);
-$darkergrey 	: lighten($black, 20%);
-$darkgrey 		: lighten($black, 30%);
-$grey 			  : lighten($black, 45%);
-$lightgrey 		: lighten($black, 75%);
-$lightergrey 	: lighten($black, 90%);
-$white 			  : rgb(255,255,255);
+$black:     rgb(0,0,0);
+$superdark:   lighten($black, 10%);
+$darkergrey:  lighten($black, 15%);
+$darkgrey:    lighten($black, 25%);
+$grey:        lighten($black, 50%);
+$lightgrey:   lighten($black, 90%);
+$lightergrey: lighten($black, 98%);
+$white:     rgb(255,255,255);
 
-// Web
-$background: 		$lightergrey;
-$textcolor: 		#494949;
-$textcolor-strong :	$black;
+/** 
+ * Web
+ */
+$background:       $lightergrey;
+$textcolor:        $darkergrey;
+$textcolor-strong: $black;
 
-// Links  //////////////////////
-$linkcolor        : $basecolor;
-$linkcolorhover   : $linkcolor;
-$linkcolorvisited : $linkcolor;
-$linkcolorfocus   : $linkcolor;
+// Default material shadows (500, 300, 800 and A100
+// Pink
+/*$primary: (
+  "df": #E91E63,
+  "h1": #F06292,
+  "h2": #AD1457,
+  "h3": #FF80AB
+);*/
+// Purple
+/*$primary: (
+  "df": #9C27B0,
+  "h1": #BA68C8,
+  "h2": #6A1B9A,
+  "h3": #EA80FC
+);*/
+// Blue
+/*$primary: (
+  "df": #2196F3,
+  "h1": #64B5F6,
+  "h2": #1565C0,
+  "h3": #82B1FF
+);*/
+// Gray
+$primary: (
+  "df": #9E9E9E,
+  "h1": #E0E0E0,
+  "h2": #424242,
+  "h3": #FAFAFA
+);
+/*$primaryclr:    #673AB7;
+$primaryclr-h1: #9575CD;
+$primaryclr-h2: #4527A0;
+$primaryclr-h3: #B388FF;*/
+
+// default material shadows (A200, A100, A400 and A700
+// Pink
+/*$accent: (
+  "df": #ff4081,
+  "h1": #ff80ab,
+  "h2": #f50057,
+  "h3": #c51162
+);*/
+// Purple
+/*$accent: (
+  "df": #e040fb,
+  "h1": #ea80fc,
+  "h2": #d500f9,
+  "h3": #aa00ff
+);*/
+// Deep purple
+/*$accent: (
+  "df": #7c4dff,
+  "h1": #b388ff,
+  "h2": #651fff,
+  "h3": #6200ea
+);*/
+// Blue
+/*$accent: (
+  "df": #448aff,
+  "h1": #82b1ff,
+  "h2": #2979ff,
+  "h3": #2962ff
+);*/
+// Light green
+/*$accent: (
+  "df": #b2ff59,
+  "h1": #ccff90,
+  "h2": #76ff03,
+  "h3": #64dd17
+);*/
+// Lime
+$accent: (
+  "df": #eeff41,
+  "h1": #f4ff81,
+  "h2": #c6ff00,
+  "h3": #aeea00
+);
+
+// default material shadows (500, 300, 800 and A100
+// Red
+$warn: (
+  "df": #F44336,
+  "h1": #E57373,
+  "h2": #C62828,
+  "h3": #FF8A80
+);
+
+/**
+ * Links 
+ */
+$linkcolor:        $textcolor;
+$linkcolorhover:   darken($linkcolor, 10);
+$linkcolorvisited: $basecolor;
+$linkcolorfocus:   darken($linkcolorvisited, 10);
+
+/**
+ * Social colors
+ */
+$social-colors: (
+  "facebook":  rgb(59, 89, 182),
+  "twitter":   rgb(85,172,238),
+  "google":    rgb(221, 75, 57),
+  "pinterest": rgb(203, 32, 39),
+  "instagram": #4E433C,
+  "youtube":   #FF3333
+);
+
+/**
+ * Colors for web sections
+ */
+$category-colors: (
+  "video":     #f6d8a0,
+  "looks":     #a3cbd1,
+  "moda":      #fcf1bc,
+  "belleza":   #fbd4b5,
+  "lifestyle": #d97690,
+  "base":      #A93667
+);
 
 
 
 
 
 /*------------------------------------*\
-    $TEXTURAS
+    $TEXTURES
 \*------------------------------------*/
 /**
- * Definimos Colores y elementos de popups, mensajes de alerta, etc...
+ * Colors and elements of popups, alert messages, etc...
  */
-$color-alert 	  : rgb(252,228,207);
-$color-error 	  : rgb(218,79,73);
-$color-info 	  : rgb(66, 184, 221);
-$color-inverse 	: invert($secondary);
-$color-success 	: rgb(91,183,91);
-$color-warning 	: rgb(231,135,48);
+$color-alert:   rgb(252,228,207);
+$color-error:   rgb(218,79,73);
+$color-info:    rgb(0,170,255);
+$color-inverse:   invert($secondary);
+$color-success: rgb(135,216,115);
+$color-warning: rgb(201,73,72);
+$color-cta:     rgb(16,197,206);
 
-// Texturas de popups
-$alertbordercolor	  : darken($color-alert, 20%);
-$alertborderwidth 	: 1px;
-$alertborderstyle 	: solid;
-$alerttext			    : darken($color-alert, 60%);
+// Popups textures
+$alertbordercolor: darken($color-alert, 20%);
+$alertborderwidth: 1px;
+$alertborderstyle: solid;
+$alerttext:        darken($color-alert, 60%);
 
 // Error
-$alerterrorcolor  : lighten($color-error, 30%);
-$alerterrorborder : lighten($color-error, 20%);
-$alerterrortext   : $color-error;
+$alerterrorcolor:  lighten($color-error, 30%);
+$alerterrorborder: lighten($color-error, 20%);
+$alerterrortext:   $color-error;
 
 // Info
-$alertinfocolor 	: lighten($color-info, 10%);
-$alertinfoborder  : darken($color-info, 10%);
-$alertinfotext 		: darken($color-info, 50%);
+$alertinfocolor:  lighten($color-info, 10%);
+$alertinfoborder: darken($color-info, 10%);
+$alertinfotext:   darken($color-info, 50%);
 
-// Inverso
-$alertinversecolor 	: $color-inverse;
-$alertinverseborder : $black;
-$alertinversetext 	: $white;
+// Inverse
+$alertinversecolor:  $color-inverse;
+$alertinverseborder: $black;
+$alertinversetext:   $white;
 
 // Success
-$alertsuccesscolor 	: lighten($color-success, 30%);
-$alertsuccessborder : lighten($color-success, 20%);
-$alertsuccesstext 	: darken($color-success, 20%);
+$alertsuccesscolor:  lighten($color-success, 30%);
+$alertsuccessborder: lighten($color-success, 20%);
+$alertsuccesstext:   darken($color-success, 20%);
 
-// Advertencia
-$alertwarningcolor 	: lighten($color-warning, 30%);
-$alertwarningborder : lighten($color-warning, 20%);
-$alertwarningtext 	: darken($color-warning, 20%);
+// Warning
+$alertwarningcolor:  lighten($color-warning, 30%);
+$alertwarningborder: lighten($color-warning, 20%);
+$alertwarningtext:   darken($color-warning, 20%);
 
-/* Colores sociales -> son los colores corporativos, pero cambiadlos
- * si hace falta. (también podéis añadir más)  ///////////////////////
- */
-$fb         : rgb(59, 89, 182);
-$tw         : rgb(64,153,255);
-$googleplus : rgb(221, 75, 57);
-$pinterest  : rgb(203, 32, 39);
-$skype      : rgb(18,165,244);
-$spotify    : rgb(129,183,26);
-$instagram  : #4E433C;
-$tumblr     : #2B4964;
-$vimeo      : #86B32D;
-$soundcloud : #f76600;
-$youtube    : #FF3333;
-$linkedin   : #4875B4;
-$flickr     : #FE0883;
-$foursquare : #8FD400;
+// Badges
+$badgebackground: $white;
+$badgecolor:      $textcolor;
 
-// badges
-$badgebackground    : transparent;
-$badgecolor         : $textcolor;
+// Buttons
+$buttonbackground:      rgb(169,54,103);
+$buttonbordercolor:       darken($buttonbackground, 10%);
+$buttonbottombordercolor: darken($buttonbordercolor, 10%);
+$buttoncolor:             $white;
+$buttonborderwidth:       1px;
+$buttonborderstyle:       solid;
 
-// botones
-$buttonbackground   : transparent;
-$buttonbordercolor  : currentcolor;
-$buttoncolor        : $textcolor;
-$buttonborderwidth  : 1px;
-$buttonborderstyle  : solid;
+// Boxes (well)
+$wellbackground:  $lightergrey;
+$wellbordercolor: $lightgrey;
+$wellborderwidth: 0px;
+$wellborderstyle: solid;
+$wellshadow:      darken($wellbackground, 10%);
+$wellshadowblur:  10px;
 
-// boxes (well)
-$wellbackground     : lighten($basecolor, 75%);
-$wellbordercolor    : darken($wellbackground, 20%);
-$wellborderwidth    : 1px;
-$wellborderstyle    : solid;
-$wellshadow         : darken($wellbackground, 10%);
-$wellshadowblur     : 10px;
+// Tables
+$tablebackground:  transparent;
+$tablestripe:      lighten($basecolor, 60%);
+$tablehover:       lighten($basecolor, 50%);
+$tableborder:      lighten($basecolor, 40%);
+$tableborderwidth: 1px;
+$tableborderstyle: solid;
 
-// tablas
-$tablebackground    : transparent;
-$tablestripe        : $lightergrey;
-$tablehover         : $lightergrey;
-$tableborder        : $grey;
-$tableborderwidth   : 1px;
-$tableborderstyle   : solid;
+// Forms
+$inputbackground:  $white;
+$inputborder:      $lightgrey;
+$inputborderwidth: 1px;
+$inputborderstyle: solid;
+$inputhover:       lighten($black, 50%);
+$inputfocus:       $basecolor, 40%;
+$placeholdercolor: $lightergrey;
 
-// formularios
-$inputbackground    : $white;
-$inputborder        : $lightgrey;
-$inputborderwidth   : 1px;
-$inputborderstyle   : solid;
-$inputhover         : lighten($black, 50%);
-$inputfocus         : $basecolor, 40%;
-$placeholdercolor   : $lightergrey;
-
-// Navegación
-$nav-width:               42px;
-$nav-height:              $nav-width;
-$nav-icon-size:           16px;
-$nav-color:               $basecolor;
-$nav-background:          $white;
-$nav-borders:             lighten($nav-background, 10%);
-$nav-lists-background:    $basecolor;
+// Navegation
+$nav-width:            44px;
+$nav-height:           42px;
+$nav-icon-size:        24px;
+$nav-color:            $white;
+$nav-background:       $basecolor;
+$nav-borders:          lighten($nav-background, 10%);
+$nav-lists-background: $basecolor;
