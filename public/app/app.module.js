@@ -17,6 +17,7 @@
 
       // components
       'header',
+      'sidenav',
 
       // shared components
       'route'

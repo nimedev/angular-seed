@@ -71,34 +71,3 @@ a:active {
 /**
  * From here, write positioning styles and details for web site. Enjoy!
  */
-
-/**
- * Stiky footer layout
- */
-.app-wrapper {
-  // Positioning
-  position: relative;
-  
-  // Box-model
-  min-height: 100%;
-}
-
-.main-content {
-  // Box-model
-  padding-bottom: $footerheight-xs;
-  
-  // Responsive
-  @include respond-to(small) {
-    padding-bottom: $footerheight-sm;
-  }
-  @include respond-to(medium) {
-    padding-bottom: $footerheight-md;
-  }
-}
-
-.site-content {
-  // Box-model
-  margin-right: auto;
-  margin-left: auto;
-  max-width: $pagemaxwidth;
-}

@@ -4,35 +4,35 @@
  * Prepare app for distribution int dist folder.
  */
 /** core modules */
-var fs = require('fs');
 
 /** npm modules */
-var autoprefixer = require('gulp-autoprefixer');
+var $ = require('gulp-load-plugins')();
 var browserSync = require('browser-sync').create();
-var cdnizer = require('gulp-cdnizer');
-var concat = require('gulp-concat');
-var cssnano = require('gulp-cssnano');
 var del = require('del');
 var gulp = require('gulp');
-var gulpif = require('gulp-if');
-var htmlmin = require('gulp-htmlmin');
-var htmlReplace = require('gulp-html-replace');
-// var jshint = require('gulp-jshint');
-var mmq = require('gulp-merge-media-queries');
-var rename = require('gulp-rename');
-var sass = require('gulp-sass');
+var historyApiFallback = require('connect-history-api-fallback');
 var runSequence = require('run-sequence');
-var uglify = require('gulp-uglify');
 
 /** others modules. */
 var config = require('./gulpconfig');
 var expressConfig = require('./config');
+
+// variables
 var cdnizerArray = config.cdnizer;
 var paths = config.paths;
 
-/** Config de autoprefixer. */
-var AUTOPREFIXER_BROWSERS = ['ie >= 9', 'ie_mob >= 10', 'ff >= 30', 'chrome >= 34', 'safari >= 7', 'opera >= 23', 'ios >= 7', 'android >= 4.4', 'bb >= 10']; // Compatibilidad css
-
+/** Config de autoprefixer. Compatibilidad css */
+var AUTOPREFIXER_BROWSERS = [
+  'ie >= 9',
+  'ie_mob >= 10',
+  'ff >= 30',
+  'chrome >= 34',
+  'safari >= 7',
+  'opera >= 23',
+  'ios >= 7',
+  'android >= 4.4',
+  'bb >= 10'
+];
 
 /**
  * CLEAN TASKS 
@@ -73,14 +73,14 @@ gulp.task('html', function () {
     removeComments: true
   };
   return gulp.src(paths.front.src.html)
-    .pipe(htmlReplace({
+    .pipe($.htmlReplace({
       'js': {
         src: '',
         tpl: ''
       }
     }))
-    .pipe(cdnizer(cdnizerArray))
-    .pipe(htmlmin(opts))
+    .pipe($.cdnizer(cdnizerArray))
+    .pipe($.htmlmin(opts))
     .pipe(gulp.dest(paths.front.dest.html));
 });
 
@@ -122,10 +122,10 @@ gulp.task('watch-styles', function () {
 /** watch scripts and styles */
 gulp.task('watch', ['watch-scripts', 'watch-styles'], function () {
   // watch for changes in script files
-  gulp.watch(paths.front.src.scripts, ['watch-scripts']);
+  gulp.watch(paths.front.watch.scripts, ['watch-scripts']);
 
   // watch for changes in styles files
-  gulp.watch(paths.front.src.sass, ['watch-styles']);
+  gulp.watch(paths.front.watch.sass, ['watch-styles']);
 });
 
 /** put all *.js files in one min.js file in source dir and reload browser */
@@ -151,18 +151,18 @@ gulp.task('server', ['watch-scripts', 'watch-styles'], function () {
     port: expressConfig.port,
     server: {
       baseDir: './public',
-      middleware: serverMiddleware
+      middleware: [historyApiFallback()]
     }
   });
 
   // watch for changes in script files
-  gulp.watch(paths.front.src.scripts, ['reload-scripts']);
+  gulp.watch(paths.front.watch.scripts, ['reload-scripts']);
 
   // watch for changes in styles files
-  gulp.watch(paths.front.src.sass, ['reload-styles']);
+  gulp.watch(paths.front.watch.sass, ['reload-styles']);
 
   // watch for changes to reload browsers
-  gulp.watch(paths.front.watch.src).on('change', browserSync.reload);
+  gulp.watch(paths.front.watch.others).on('change', browserSync.reload);
 });
 
 
@@ -184,13 +184,11 @@ gulp.task('default', function (cb) {
  */
 function scripts(dest, options) {
   var task = gulp.src(paths.front.src.scripts)
-  // .pipe(jshint('.jshintrc'))
-  // .pipe(jshint.reporter('default'))
-    .pipe(concat('main.min.js'));
+    .pipe($.concat('main.min.js'));
 
   // check if uglify
   if (!options || !options.normal) {
-    task = task.pipe(uglify());
+    task = task.pipe($.uglify());
   }
 
   // destination folder
@@ -206,45 +204,6 @@ function scripts(dest, options) {
 }
 
 /**
- * middleware to redirect to index.html because is a singla page app.
- * @param {Object} req - request object.
- * @param {Object} res - response object.
- * @param {Object} next - next object.
- */
-function serverMiddleware(req, res, next) {
-  var urlArray = req.url.split('/');
-  var lastArray;
-
-  // split last element of the url array by '.' to detect if is a file  request
-  lastArray = urlArray[urlArray.length - 1].split('.');
-
-  // if the last element is a file (containt more than one elements)...
-  if (lastArray.length > 1) {
-    return next();
-  }
-
-  // otherwise, re-direct to index.html
-  console.log('redirect...');
-  fs.readFile('./public/index.html', function (err, contents) {
-    // if the fileRead was successful...
-    if (!err) {
-      res.writeHeader(200, {
-        "Content-Type": "text/html"
-      });
-      res.write(contents);
-      res.end();
-    } else {
-      // otherwise, set a 404 header...
-      res.writeHead(404, {
-        'Content-Type': 'text/html'
-      });
-      // send a custom 'file not found' message and then close the request
-      res.end('<h1>Sorry, the page you are looking for cannot be found.</h1>');
-    };
-  });
-}
-
-/**
  * compile sass files according to dest path.
  * @param {String} dest - destination path.
  * @param {Object} options - options object:
@@ -252,14 +211,14 @@ function serverMiddleware(req, res, next) {
  */
 function styles(dest, options) {
   var task = gulp.src(paths.front.src.styles)
-    .pipe(sass().on('error', function (err) {
+    .pipe($.sass().on('error', function (err) {
       console.log(err.toString());
       this.emit('end');
     }))
-    .pipe(gulpif(config.autoprefixer, autoprefixer({ browsers: AUTOPREFIXER_BROWSERS })))
-    .pipe(gulpif(config.mergeMediaQueries, mmq()))
-    .pipe(gulpif(config.minifyCss, cssnano()))
-    .pipe(rename('style.min.css'))
+    .pipe($.if(config.autoprefixer, $.autoprefixer({ browsers: AUTOPREFIXER_BROWSERS })))
+    .pipe($.if(config.mergeMediaQueries, $.mergeMediaQueries()))
+    .pipe($.if(config.minifyCss, $.cssnano()))
+    .pipe($.rename('style.min.css'))
     .pipe(gulp.dest(dest));
 
   // check if reload browser

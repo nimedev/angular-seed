@@ -29,6 +29,7 @@
         "others": [
           "public/app*/**/*.json"
         ],
+        "sass": "public/assets/scss/**/*",
         "scripts": [
           "public/app/i18n/*.js",
           "public/app/**/*.module.js",
@@ -36,8 +37,7 @@
           "public/assets/**/*.js",
           "!public/assets/js/main.min.js"
         ],
-        "styles": "public/assets/scss/style.scss",
-        "sass": "public/assets/scss/**/*"
+        "styles": "public/assets/scss/style.scss"
       },
       "dest": {
         "images": "dist/public/assets/img",
@@ -47,10 +47,17 @@
         "styles": "dist/public/assets/css"
       },
       "watch": {
-        "src": [
+        "others": [
           "public/**/*",
           "!public/assets/js/main.min.js",
           "!public/assets/css/style.min.js"
+        ],
+        "sass": "public/assets/scss/**/*",
+        "scripts": [
+          "public/app/**/*",
+          "public/assets/js/**/*",
+          "!public/app/**/*.html",
+          "!public/assets/js/main.min.js"
         ],
         "dest": {
           "scripts": "public/assets/js",
