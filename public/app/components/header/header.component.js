@@ -1,29 +1,20 @@
-/** appHeader directive */
+/** appHeader component */
 (function() {
   'use strict';
-
-  angular
-    .module('header')
-    .directive('appHeader', directive);
 
   /**
    * header directive
    * @name appHeader
    * @memberof header
    */
-  function directive() {
-    var directive = {
+  angular
+    .module('header')
+    .component('appHeader', {
       controller: Controller,
       controllerAs: 'vm',
       restrict: 'A',
-      scope: {},
       templateUrl: 'app/components/header/header.tmpl.html'
-    };
-
-    return directive;
-
-    /////////////////
-  }
+    });
 
   Controller.$inject = ['$location'];
 
