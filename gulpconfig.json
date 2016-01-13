@@ -1,4 +1,5 @@
 {
+  "offline": false,
   "autoprefixer": true,
   "minifyCss": true,
   "mergeMediaQueries": true,

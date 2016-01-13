@@ -21,7 +21,7 @@ var expressConfig = require('./config');
 var cdnizerArray = config.cdnizer;
 var paths = config.paths;
 
-/** Config de autoprefixer. Compatibilidad css */
+/** Config de autoprefixer. CSS compatibility */
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 9',
   'ie_mob >= 10',
@@ -150,8 +150,11 @@ gulp.task('server', ['watch-scripts', 'watch-styles'], function () {
     open: false,
     port: expressConfig.port,
     server: {
-      baseDir: './public',
-      middleware: [historyApiFallback()]
+      baseDir: 'public',
+      middleware: [historyApiFallback()],
+      routes: {
+        '/bower_components': 'bower_components'
+      }
     }
   });
 
