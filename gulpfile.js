@@ -205,13 +205,14 @@ function optimizeHtmlTask(reload) {
 /**
  * Process javascript files and copy the resulting file in dist folder.
  * @param {Boolean} reload - indicate if use browser-sync
- * @param {Boolean} uglify - indicate if uglify the resulting file
+ * @param {Boolean} normal - indicate if no uglify the resulting file
  */
-function scriptsTask(reload, uglify) {
+function scriptsTask(reload, normal) {
   del.sync(paths.front.scripts.clean);
   return gulp.src(paths.front.scripts.src)
     .pipe($.concat('main.min.js'))
-    .pipe($.if(uglify, $.uglify()))
+    .pipe(gulp.dest('.tmp/' + paths.front.scripts.dest))
+    .pipe($.if(!normal, $.uglify()))
     .pipe(gulp.dest(paths.front.scripts.dest))
     .pipe($.size({ title: 'scripts' }))
     .pipe($.if(reload, browserSync.stream()));

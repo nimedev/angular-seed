@@ -32,8 +32,7 @@
           "src/app/i18n/*.js",
           "src/app/**/*.module.js",
           "src/app/**/*.js",
-          "src/assets/**/*.js",
-          "!src/assets/js/main.min.js"
+          "src/assets/**/*.js"
         ],
         "dest": "dist/assets/js"
       },
