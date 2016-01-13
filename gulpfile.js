@@ -19,6 +19,7 @@ var expressConfig = require('./config');
 
 // variables
 var cdnizerArray = config.cdnizer;
+var flags = config.flags;
 var paths = config.paths;
 
 /** Config de autoprefixer. CSS compatibility */
@@ -44,64 +45,35 @@ gulp.task('clean', function () {
 
 
 /** 
- * BACK-END TASKS
- */
-/** copy only necesary files for back-end */
-gulp.task('copy-back', function () {
-  return gulp.src(paths.back.src)
-    .pipe(gulp.dest(paths.back.dest));
-});
-
-/** build back-end */
-gulp.task('build-back', ['copy-back']);
-
-
-/** 
  * FRONT-END TASKS
  */
+/** copy i18n files */
+gulp.task('i18n', function () {
+  return i18nTask();
+});
+
 /** copy images */
 gulp.task('images', function () {
-  return gulp.src(paths.front.src.images)
-  // .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
-    .pipe(gulp.dest(paths.front.dest.images));
+  return optimizeImageTask();
 });
 
 /** build html */
 gulp.task('html', function () {
-  var opts = {
-    collapseWhitespace: true,
-    removeComments: true
-  };
-  return gulp.src(paths.front.src.html)
-    .pipe($.htmlReplace({
-      'js': {
-        src: '',
-        tpl: ''
-      }
-    }))
-    .pipe($.cdnizer(cdnizerArray))
-    .pipe($.htmlmin(opts))
-    .pipe(gulp.dest(paths.front.dest.html));
-});
-
-/** copy front-end files that not are html, css, img or js  */
-gulp.task('others', function () {
-  return gulp.src(paths.front.src.others)
-    .pipe(gulp.dest(paths.front.dest.others));
+  return optimizeHtmlTask();
 });
 
 /** put all *.js files in one min.js file in dist dir */
 gulp.task('scripts', function () {
-  return scripts(paths.front.dest.scripts);
+  return scriptsTask();
 });
 
 /** put all *.scss files in one min.css file and compile in dist dir  */
 gulp.task('styles', function () {
-  return styles(paths.front.dest.styles);
+  return styles();
 });
 
 /** build all front-end */
-gulp.task('build-front', ['images', 'html', 'others', 'scripts', 'styles']);
+gulp.task('build:front', ['i18n', 'images', 'html', 'scripts', 'styles']);
 
 
 /** 
@@ -180,30 +152,69 @@ gulp.task('default', function (cb) {
 
 /** HELPER FUNCTIONS */
 /**
- * process javascript files according to dest path.
- * @param {String} dest - destination path.
- * @param {Object} options - options object:
- *        options: {uglify: indicate if uglify, reload: indicate if use browser-sync}
+ * copy json files for multi-language in dist folder.
+ * @param {Boolean} reload - indicate if use browser-sync 
  */
-function scripts(dest, options) {
-  var task = gulp.src(paths.front.src.scripts)
-    .pipe($.concat('main.min.js'));
+function i18nTask(reload) {
+  del.sync(paths.front.i18n.clean);
+  return gulp.src(paths.front.i18n.src)
+    .pipe(gulp.dest(paths.front.i18n.dest))
+    .pipe($.size({ title: 'i18n' }))
+    .pipe($.if(reload, browserSync.stream()));
+}
 
-  // check if uglify
-  if (!options || !options.normal) {
-    task = task.pipe($.uglify());
-  }
+/**
+ * optimize images and copy in dist folder.
+ * @param {Boolean} reload - indicate if use browser-sync
+ */
+function optimizeImageTask(reload) {
+  del.sync(paths.front.images.clean);
+  return gulp.src(paths.front.images.src)
+  // .pipe($.imagemin({
+  //   progressive: true,
+  //   interlaced: true
+  // }))
+    .pipe(gulp.dest(paths.front.images.dest))
+    .pipe($.size({ title: 'images' }))
+    .pipe($.if(reload, browserSync.stream()));
+}
 
-  // destination folder
-  task = task.pipe(gulp.dest(dest));
+/**
+ * Optimize html files and copy in dist folder.
+ * @param {Boolean} reload - indicate if use browser-sync
+ */
+function optimizeHtmlTask(reload) {
+  del.sync(paths.front.html.clean);
+  return gulp.src(paths.front.html.src)
+    .pipe($.htmlReplace({
+      'js': {
+        src: '',
+        tpl: ''
+      }
+    }))
+    .pipe($.if(flags.offline, $.cdnizer(cdnizerArray)))
+    .pipe($.htmlmin({
+      collapseWhitespace: true,
+      removeComments: true
+    }))
+    .pipe(gulp.dest(paths.front.html.dest))
+    .pipe($.size({ title: 'html' }))
+    .pipe($.if(reload, browserSync.stream()));
+}
 
-  // check if reload browser
-  if (options && options.reload) {
-    task.pipe(browserSync.stream());
-  }
-
-  // return task
-  return task;
+/**
+ * Process javascript files and copy the resulting file in dist folder.
+ * @param {Boolean} reload - indicate if use browser-sync
+ * @param {Boolean} uglify - indicate if uglify the resulting file
+ */
+function scriptsTask(reload, uglify) {
+  del.sync(paths.front.scripts.clean);
+  return gulp.src(paths.front.scripts.src)
+    .pipe($.concat('main.min.js'))
+    .pipe($.if(uglify, $.uglify()))
+    .pipe(gulp.dest(paths.front.scripts.dest))
+    .pipe($.size({ title: 'scripts' }))
+    .pipe($.if(reload, browserSync.stream()));
 }
 
 /**
@@ -218,9 +229,9 @@ function styles(dest, options) {
       console.log(err.toString());
       this.emit('end');
     }))
-    .pipe($.if(config.autoprefixer, $.autoprefixer({ browsers: AUTOPREFIXER_BROWSERS })))
-    .pipe($.if(config.mergeMediaQueries, $.mergeMediaQueries()))
-    .pipe($.if(config.minifyCss, $.cssnano()))
+    .pipe($.if(flags.autoprefixer, $.autoprefixer({ browsers: AUTOPREFIXER_BROWSERS })))
+    .pipe($.if(flags.mergeMediaQueries, $.mergeMediaQueries()))
+    .pipe($.if(flags.minifyCss, $.cssnano()))
     .pipe($.rename('style.min.css'))
     .pipe(gulp.dest(dest));
 
