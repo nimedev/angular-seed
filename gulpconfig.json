@@ -38,7 +38,7 @@
       },
       "styles": {
         "clean": "dist/**/*.css",
-        "src": "src/assets/scss/**/*.scss",
+        "src": "src/assets/scss/style.scss",
         "dest": "dist/assets/css"
       },
       "watch": {
