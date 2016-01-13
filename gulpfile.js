@@ -47,27 +47,27 @@ gulp.task('clean', function () {
 /** 
  * FRONT-END TASKS
  */
-/** copy i18n files */
+/** runs i18nTask without using browser-sync */
 gulp.task('i18n', function () {
   return i18nTask();
 });
 
-/** copy images */
+/** runs optimizeImageTask without using browser-sync */
 gulp.task('images', function () {
   return optimizeImageTask();
 });
 
-/** build html */
+/** runs optimizeHtmlTask without using browser-sync */
 gulp.task('html', function () {
   return optimizeHtmlTask();
 });
 
-/** put all *.js files in one min.js file in dist dir */
+/** runs scriptsTask without using browser-sync */
 gulp.task('scripts', function () {
   return scriptsTask();
 });
 
-/** put all *.scss files in one min.css file and compile in dist dir  */
+/** runs stylesTask without using browser-sync */
 gulp.task('styles', function () {
   return stylesTask();
 });
