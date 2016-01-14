@@ -1,5 +1,6 @@
 'use strict';
 
-var translationsEN = {
+// Default language EN (English)
+var defaultLanguage = {
 
 };

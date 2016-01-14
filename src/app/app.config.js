@@ -1,5 +1,5 @@
 /** config component for angular-seed module. */
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -21,7 +21,7 @@
     $locationProvider.html5Mode(true);
 
     // angular-translate configuration
-    $translateProvider.translations('en', translationsEN);
+    $translateProvider.translations('en', defaultLanguage);
     $translateProvider.useStaticFilesLoader({
       prefix: 'app/i18n/locale-',
       suffix: '.json'
@@ -31,8 +31,8 @@
     $translateProvider.useLocalStorage();
     // $translateProvider.useSanitizeValueStrategy('sanitize');
     $translateProvider.useSanitizeValueStrategy('escape');
-    if (constants.DEBUG) {
-      // $translateProvider.useMissingTranslationHandlerLog();
-    }
+    // if (constants.DEBUG) {
+    //   $translateProvider.useMissingTranslationHandlerLog();
+    // }
   }
 })();
