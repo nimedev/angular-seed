@@ -1,6 +1,8 @@
 {
   "flags": {
     "offline": false,
+    "lintJscs": true,
+    "lintJshint": true,
     "autoprefixer": true,
     "minifyCss": true,
     "mergeMediaQueries": true

@@ -36,7 +36,7 @@ var AUTOPREFIXER_BROWSERS = [
 ];
 
 /**
- * CLEAN TASKS 
+ * CLEAN TASKS
  */
 /** clean output directory */
 gulp.task('clean', function () {
@@ -44,42 +44,51 @@ gulp.task('clean', function () {
 });
 
 
-/** 
+/**
  * FRONT-END TASKS
  */
-/** runs i18nTask without using browser-sync */
+/** Runs i18nTask without using browser-sync */
 gulp.task('i18n', function () {
   return i18nTask();
 });
 
-/** runs optimizeImageTask without using browser-sync */
+/** Runs optimizeImageTask without using browser-sync */
 gulp.task('images', function () {
   return optimizeImageTask();
 });
 
-/** runs optimizeHtmlTask without using browser-sync */
+/** Runs optimizeHtmlTask without using browser-sync */
 gulp.task('html', function () {
   return optimizeHtmlTask();
 });
 
-/** runs scriptsTask without using browser-sync */
-gulp.task('scripts', function () {
+/** Runs scriptsTask without using browser-sync */
+gulp.task('scripts', ['lint'], function () {
   return scriptsTask();
 });
 
-/** runs stylesTask without using browser-sync */
+/** Runs stylesTask without using browser-sync */
 gulp.task('styles', function () {
   return stylesTask();
+});
+
+/** Lint JavaScript */
+gulp.task('lint', function () {
+  return gulp.src(paths.front.scripts.src)
+    .pipe($.if(flags.lintJscs, $.jscs()))
+    .pipe($.if(flags.lintJscs, $.jscsStylish.combineWithHintResults()))
+    .pipe($.if(flags.lintJshint, $.jshint()))
+    .pipe($.if(flags.lintJshint, $.jshint.reporter('jshint-stylish')));
 });
 
 /** build all front-end */
 gulp.task('build:front', ['i18n', 'images', 'html', 'scripts', 'styles']);
 
 
-/** 
- * WATCH AND RELOAD TASKS 
+/**
+ * WATCH AND RELOAD TASKS
  */
-/** put all *.js files in one min.js file in source dir*/
+/** put all *.js files in one min.js file in source dir */
 gulp.task('watch-scripts', function () {
   return scripts(paths.front.watch.dest.scripts, {
     normal: true
@@ -141,8 +150,8 @@ gulp.task('server', ['watch-scripts', 'watch-styles'], function () {
 });
 
 
-/** 
- * DEFAULT TASK 
+/**
+ * DEFAULT TASK
  */
 gulp.task('default', function (cb) {
   del.sync(paths.clean);
@@ -153,7 +162,7 @@ gulp.task('default', function (cb) {
 /** HELPER FUNCTIONS */
 /**
  * copy json files for multi-language in dist folder.
- * @param {Boolean} reload - indicate if use browser-sync 
+ * @param {Boolean} reload - indicate if use browser-sync
  */
 function i18nTask(reload) {
   del.sync(paths.front.i18n.clean);
