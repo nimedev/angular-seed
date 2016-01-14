@@ -15,12 +15,12 @@ var runSequence = require('run-sequence');
 
 /** others modules. */
 var config = require('./gulpconfig');
-var expressConfig = require('./config');
 
 // variables
 var cdnizerArray = config.cdnizer;
 var flags = config.flags;
 var paths = config.paths;
+var reloadTasks;
 
 /** Config de autoprefixer. CSS compatibility */
 var AUTOPREFIXER_BROWSERS = [
@@ -86,52 +86,75 @@ gulp.task('build:front', ['i18n', 'images', 'html', 'scripts', 'styles']);
 
 
 /**
- * WATCH AND RELOAD TASKS
+ * WATCH TASKS
  */
-/** put all *.js files in one min.js file in source dir */
-gulp.task('watch-scripts', function () {
-  return scripts(paths.front.watch.dest.scripts, {
-    normal: true
-  });
-});
-
-/** put all *.scss files in one min.css file and compile in source dir */
-gulp.task('watch-styles', function () {
-  return styles(paths.front.watch.dest.styles);
+/** Runs scriptsTask without using browser-sync and uglify */
+gulp.task('scripts:watch', function () {
+  return scriptsTask(false, true);
 });
 
 /** watch scripts and styles */
-gulp.task('watch', ['watch-scripts', 'watch-styles'], function () {
+gulp.task('watch', ['i18n', 'images', 'html', 'scripts:watch', 'styles'], function () {
+  // watch for changes in i18n files
+  gulp.watch(paths.front.i18n.watch, ['i18n']);
+
+  // watch for changes in images
+  gulp.watch(paths.front.images.watch, ['images']);
+
+  // watch for changes in html
+  gulp.watch(paths.front.html.watch, ['html']);
+
   // watch for changes in script files
-  gulp.watch(paths.front.watch.scripts, ['watch-scripts']);
+  gulp.watch(paths.front.scripts.watch, ['scripts:watch']);
 
   // watch for changes in styles files
-  gulp.watch(paths.front.watch.sass, ['watch-styles']);
+  gulp.watch(paths.front.styles.watch, ['styles']);
 });
 
-/** put all *.js files in one min.js file in source dir and reload browser */
-gulp.task('reload-scripts', function () {
-  return scripts(paths.front.watch.dest.scripts, {
-    normal: true,
-    reload: true
-  });
+
+/**
+ * RELOAD TASKS
+ */
+/** Runs i18nTask using browser-sync */
+gulp.task('i18n:reload', function () {
+  return i18nTask(true);
 });
 
-/** put all *.scss files in one min.css file and compile in source dir and reload browser */
-gulp.task('reload-styles', function () {
-  return styles(paths.front.watch.dest.styles, {
-    reload: true
-  });
+/** Runs optimizeImageTask using browser-sync */
+gulp.task('images:reload', function () {
+  return optimizeImageTask(true);
+});
+
+/** Runs optimizeHtmlTask using browser-sync */
+gulp.task('html:reload', function () {
+  return optimizeHtmlTask(true);
+});
+
+/** Runs scriptsTask using browser-sync without uglify */
+gulp.task('scripts:reload', function () {
+  return scriptsTask(true, true);
+});
+
+/** Runs stylesTask using browser-sync */
+gulp.task('styles:reload', function () {
+  return stylesTask(true);
 });
 
 /** watch with browser reload */
-gulp.task('server', ['watch-scripts', 'watch-styles'], function () {
+reloadTasks = [
+  'i18n:reload',
+  'images:reload',
+  'html:reload',
+  'scripts:reload',
+  'styles:reload'
+];
+gulp.task('server', reloadTasks, function () {
   // config browser-sync module
   browserSync.init({
     open: false,
-    port: expressConfig.port,
+    port: config.server.port,
     server: {
-      baseDir: 'public',
+      baseDir: 'dist',
       middleware: [historyApiFallback()],
       routes: {
         '/bower_components': 'bower_components'
@@ -139,14 +162,20 @@ gulp.task('server', ['watch-scripts', 'watch-styles'], function () {
     }
   });
 
+  // watch for changes in i18n files
+  gulp.watch(paths.front.i18n.watch, ['i18n:reload']);
+
+  // watch for changes in images
+  gulp.watch(paths.front.images.watch, ['images:reload']);
+
+  // watch for changes in html
+  gulp.watch(paths.front.html.watch, ['html:reload']);
+
   // watch for changes in script files
-  gulp.watch(paths.front.watch.scripts, ['reload-scripts']);
+  gulp.watch(paths.front.scripts.watch, ['scripts:reload']);
 
   // watch for changes in styles files
-  gulp.watch(paths.front.watch.sass, ['reload-styles']);
-
-  // watch for changes to reload browsers
-  gulp.watch(paths.front.watch.others).on('change', browserSync.reload);
+  gulp.watch(paths.front.styles.watch, ['styles:reload']);
 });
 
 

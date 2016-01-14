@@ -1,11 +1,14 @@
 {
   "flags": {
-    "offline": false,
+    "offline": true,
     "lintJscs": true,
     "lintJshint": true,
     "autoprefixer": true,
     "minifyCss": true,
     "mergeMediaQueries": true
+  },
+  "server": {
+    "port": 3000
   },
   "paths": {
     "clean": [
@@ -16,12 +19,14 @@
       "i18n": {
         "clean": "dist/app/i18n/*",
         "src": "src/app/i18n/*.json",
-        "dest": "dist/app/i18n"
+        "dest": "dist/app/i18n",
+        "watch": "src/app/i18n/**/*"
       },
       "images": {
         "clean": "dist/assets/img/*",
         "src": "src/assets/img/**/*",
-        "dest": "dist/assets/img"
+        "dest": "dist/assets/img",
+        "watch": "src/assets/img/**/*"
       },
       "html": {
         "clean": [
@@ -30,7 +35,13 @@
           "dist/**/*.html"
         ],
         "src": "src/**/*.html",
-        "dest": "dist/"
+        "dest": "dist/",
+        "watch": [
+          "src/*.html",
+          "src/app/components/**/*",
+          "src/app/shared/**/*",
+          "!src/app/**/*.js"
+        ]
       },
       "scripts": {
         "clean": "dist/**/*.js",
@@ -40,30 +51,19 @@
           "src/app/**/*.js",
           "src/assets/**/*.js"
         ],
-        "dest": "dist/assets/js"
+        "dest": "dist/assets/js",
+        "watch": [
+          "src/app/**/*",
+          "src/assets/js/**/*",
+          "!src/app/**/*.html",
+          "!src/app/**/*.json"
+        ]
       },
       "styles": {
-        "clean": "dist/**/*.css",
+        "clean": "dist/assets/css/**",
         "src": "src/assets/scss/style.scss",
-        "dest": "dist/assets/css"
-      },
-      "watch": {
-        "others": [
-          "public/**/*",
-          "!public/assets/js/main.min.js",
-          "!public/assets/css/style.min.js"
-        ],
-        "sass": "public/assets/scss/**/*",
-        "scripts": [
-          "public/app/**/*",
-          "public/assets/js/**/*",
-          "!public/app/**/*.html",
-          "!public/assets/js/main.min.js"
-        ],
-        "dest": {
-          "scripts": "public/assets/js",
-          "styles": "public/assets/css"
-        }
+        "dest": "dist/assets/css",
+        "watch": "src/assets/scss/**/*"
       }
     }
   },
