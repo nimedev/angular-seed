@@ -14,9 +14,9 @@
     ],
     "front": {
       "i18n": {
-        "clean": "dist/app/i18n/*",
-        "src": "src/app/i18n/*.json",
-        "dest": "dist/app/i18n"
+        "clean": "dist/app/shared/i18n/locales/*",
+        "src": "src/app/shared/i18n/locales/*.json",
+        "dest": "dist/app/shared/i18n/locales"
       },
       "images": {
         "clean": "dist/assets/img/*",
@@ -31,7 +31,7 @@
       "scripts": {
         "clean": "dist/**/*.js",
         "src": [
-          "src/app/i18n/*.js",
+          "src/app/shared/i18n/locales/*.js",
           "src/app/**/*.module.js",
           "src/app/**/*.js",
           "src/assets/**/*.js"

@@ -155,7 +155,7 @@ gulp.task('server', ['watch-scripts', 'watch-styles'], function () {
  */
 gulp.task('default', function (cb) {
   del.sync(paths.clean);
-  runSequence(['copy-back', 'build-front'], cb);
+  runSequence(['build:front'], cb);
 });
 
 
