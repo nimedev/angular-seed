@@ -25,10 +25,10 @@
     ],
     "front": {
       "i18n": {
-        "clean": "dist/app/i18n/*",
-        "src": "src/app/i18n/*.json",
-        "dest": "dist/app/i18n",
-        "watch": "src/app/i18n/**/*"
+        "clean": "dist/assets/i18n/*",
+        "src": "src/assets/i18n/*.json",
+        "dest": "dist/assets/i18n",
+        "watch": "src/assets/i18n/**/*"
       },
       "images": {
         "clean": "dist/assets/img/*",
@@ -41,10 +41,16 @@
         "dest": "dist/",
         "watch": "src/index.html"
       },
+      "lint": {
+        "src": [
+          "src/app/**/*.js",
+          "src/assets/js/**/*.js"
+        ]
+      },
       "scripts": {
         "clean": "dist/**/*.js",
         "src": [
-          "src/app/i18n/default.js",
+          "src/assets/i18n/default.js",
           "src/app/**/*.module.js",
           "src/app/**/*.js",
           "src/assets/**/*.js"

@@ -24,7 +24,7 @@
     // angular-translate configuration
     $translateProvider.translations('en', defaultLanguage);
     $translateProvider.useStaticFilesLoader({
-      prefix: 'app/i18n/locale-',
+      prefix: 'assets/i18n/locale-',
       suffix: '.json'
     });
     $translateProvider.preferredLanguage('en');

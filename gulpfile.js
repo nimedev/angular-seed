@@ -76,7 +76,7 @@ gulp.task('styles', function () {
 
 /** Lint JavaScript */
 gulp.task('lint', function () {
-  return gulp.src(paths.front.scripts.src)
+  return gulp.src(paths.front.lint.src)
     .pipe($.if(flags.lintJscs, $.jscs()))
     .pipe($.if(flags.lintJscs, $.jscsStylish.combineWithHintResults()))
     .pipe($.if(flags.lintJshint, $.jshint()))
