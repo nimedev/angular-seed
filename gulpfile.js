@@ -7,6 +7,7 @@
 
 /** npm modules */
 var $ = require('gulp-load-plugins')();
+var addStream = require('add-stream');
 var browserSync = require('browser-sync').create();
 var del = require('del');
 var gulp = require('gulp');
@@ -20,6 +21,7 @@ var config = require('./gulpconfig');
 var cdnizerArray = config.cdnizer;
 var flags = config.flags;
 var paths = config.paths;
+var templateCache = config.templateCache;
 var reloadTasks;
 
 /** Config de autoprefixer. CSS compatibility */
@@ -89,7 +91,7 @@ gulp.task('build:front', ['i18n', 'images', 'html', 'scripts', 'styles']);
  * WATCH TASKS
  */
 /** Runs scriptsTask without using browser-sync and uglify */
-gulp.task('scripts:watch', function () {
+gulp.task('scripts:watch', ['lint'], function () {
   return scriptsTask(false, true);
 });
 
@@ -131,7 +133,7 @@ gulp.task('html:reload', function () {
 });
 
 /** Runs scriptsTask using browser-sync without uglify */
-gulp.task('scripts:reload', function () {
+gulp.task('scripts:reload', ['lint'], function () {
   return scriptsTask(true, true);
 });
 
@@ -241,6 +243,18 @@ function optimizeHtmlTask(reload) {
 }
 
 /**
+ * Prepare templates in stream. 
+ */
+function prepareTemplates() {
+  return gulp.src(paths.front.templates.src)
+    .pipe($.htmlmin({
+      collapseWhitespace: true,
+      removeComments: true
+    }))
+    .pipe($.angularTemplatecache(templateCache.file, templateCache.options));
+}
+
+/**
  * Process javascript files and copy the resulting file in dist folder.
  * Make a copy in .tmp folder without uglify.
  * @param {Boolean} reload - indicate if use browser-sync
@@ -250,6 +264,7 @@ function scriptsTask(reload, normal) {
   var name = 'main.min.js';
   del.sync(paths.front.scripts.clean);
   return gulp.src(paths.front.scripts.src)
+    .pipe(addStream.obj(prepareTemplates()))
     .pipe($.concat(name))
     .pipe(gulp.dest('.tmp/' + paths.front.scripts.dest))
     .pipe($.if(!normal, $.uglify()))

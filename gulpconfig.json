@@ -10,6 +10,13 @@
   "server": {
     "port": 3000
   },
+  "templateCache": {
+    "file": "templates.js",
+    "options": {
+      "root": "app/",
+      "standalone": true
+    }
+  },
   "paths": {
     "clean": [
       "dist/*",
@@ -29,19 +36,9 @@
         "watch": "src/assets/img/**/*"
       },
       "html": {
-        "clean": [
-          "dist/app/components/*",
-          "dist/app/shared/*",
-          "dist/**/*.html"
-        ],
-        "src": "src/**/*.html",
+        "src": "src/index.html",
         "dest": "dist/",
-        "watch": [
-          "src/*.html",
-          "src/app/components/**/*",
-          "src/app/shared/**/*",
-          "!src/app/**/*.js"
-        ]
+        "watch": "src/index.html"
       },
       "scripts": {
         "clean": "dist/**/*.js",
@@ -55,7 +52,6 @@
         "watch": [
           "src/app/**/*",
           "src/assets/js/**/*",
-          "!src/app/**/*.html",
           "!src/app/**/*.json"
         ]
       },
@@ -64,6 +60,9 @@
         "src": "src/assets/scss/style.scss",
         "dest": "dist/assets/css",
         "watch": "src/assets/scss/**/*"
+      },
+      "templates": {
+        "src": "src/app/**/*.html"
       }
     }
   },

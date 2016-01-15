@@ -20,6 +20,9 @@
       'sidenav',
 
       // shared components
-      'route'
+      'route',
+      
+      // template module is added with gulp task scritps
+      'templates'
     ]);
 })();
