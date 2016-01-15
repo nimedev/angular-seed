@@ -28,7 +28,10 @@
         "clean": "dist/assets/i18n/*",
         "src": "src/assets/i18n/*.json",
         "dest": "dist/assets/i18n",
-        "watch": "src/assets/i18n/**/*"
+        "watch": [
+          "src/assets/i18n/**/*",
+          "!src/assets/i18n/**/*.js"
+        ]
       },
       "images": {
         "clean": "dist/assets/img/*",
@@ -58,6 +61,7 @@
         "dest": "dist/assets/js",
         "watch": [
           "src/app/**/*",
+          "src/assets/i18n/**/*",
           "src/assets/js/**/*",
           "!src/app/**/*.json"
         ]

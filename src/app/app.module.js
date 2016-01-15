@@ -1,28 +1,27 @@
 /** @module app */
-(function() {
+(function () {
   'use strict';
 
-  angular
-    .module('angular-seed', [
-      // angular modules
-      'ngAnimate',
-      'ngAria',
-      'ngCookies',
-      'ngMessages',
-      'ngResource',
-      'ngSanitize',
+  angular.module('angular-seed', [
+  // angular modules
+    'ngAnimate',
+    'ngAria',
+    'ngCookies',
+    'ngMessages',
+    'ngResource',
+    'ngSanitize',
 
-      // comunity modules
-      'pascalprecht.translate',
+  // comunity modules
 
-      // components
-      'header',
-      'sidenav',
+  // components
+    'header',
+    'sidenav',
 
-      // shared components
-      'route',
+  // shared components
+    'i18n',
+    'route',
       
-      // template module is added with gulp task scritps
-      'templates'
-    ]);
+  // template module is added with gulp task scritps
+    'templates'
+  ]);
 })();

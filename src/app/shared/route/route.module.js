@@ -2,6 +2,5 @@
 (function() {
   'use strict';
 
-  angular
-    .module('route', ['ngRoute']);
+  angular.module('route', ['ngRoute']);
 })();
