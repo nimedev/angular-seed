@@ -1,3 +1,4 @@
+/* global defaultLanguage */
 /** config component for angular-seed module. */
 (function () {
   'use strict';
