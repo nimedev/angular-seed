@@ -1,6 +1,6 @@
 {
   "flags": {
-    "offline": true,
+    "offline": false,
     "lintJscs": true,
     "lintJshint": true,
     "autoprefixer": true,
@@ -92,47 +92,47 @@
     {
       "file": "bower_components/angular/*.js",
       "package": "angular",
-      "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }/angular.min.js"
+      "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }-rc.0/angular.min.js"
     },
     {
       "file": "bower_components/angular-animate/*.js",
       "package": "angular",
-      "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }/angular-animate.min.js"
+      "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }-rc.0/angular-animate.min.js"
     },
     {
       "file": "bower_components/angular-aria/*.js",
       "package": "angular",
-      "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }/angular-aria.min.js"
+      "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }-rc.0/angular-aria.min.js"
     },
     {
       "file": "bower_components/angular-cookies/*.js",
       "package": "angular",
-      "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }/angular-cookies.min.js"
+      "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }-rc.0/angular-cookies.min.js"
     },
     {
       "file": "bower_components/angular-messages/*.js",
       "package": "angular",
-      "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }/angular-messages.min.js"
+      "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }-rc.0/angular-messages.min.js"
     },
     {
       "file": "bower_components/angular-resource/*.js",
       "package": "angular",
-      "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }/angular-resource.min.js"
+      "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }-rc.0/angular-resource.min.js"
     },
     {
       "file": "bower_components/angular-route/*.js",
       "package": "angular",
-      "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }/angular-route.min.js"
+      "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }-rc.0/angular-route.min.js"
     },
     {
       "file": "bower_components/angular-sanitize/*.js",
       "package": "angular",
-      "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }/angular-sanitize.min.js"
+      "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }-rc.0/angular-sanitize.min.js"
     },
     {
       "file": "bower_components/angular-touch/*.js",
       "package": "angular",
-      "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }/angular-touch.min.js"
+      "cdn": "https://ajax.googleapis.com/ajax/libs/angularjs/${ major }.${ minor }.${ patch }-rc.0/angular-touch.min.js"
     },
     {
       "file": "bower_components/angular-material/*.js",
