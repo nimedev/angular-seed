@@ -19,6 +19,7 @@
   },
   "paths": {
     "clean": [
+      ".tmp/*",
       "dist/*",
       "!dist/.git*"
     ],
