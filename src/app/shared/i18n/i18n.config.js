@@ -4,7 +4,7 @@
   'use strict';
 
   angular
-    .module('i18n')
+    .module('angular-seed')
     .config(config);
 
   config.$inject = ['$translateProvider'];
@@ -14,7 +14,6 @@
    * @name config
    * @memberof i18n
    * @param {Object} $translateProvider - to angular-translate settings.
-   * @param {Object} constants to get debug mode.
    */
   function config($translateProvider) {
     // angular-translate configuration
@@ -29,7 +28,6 @@
     $translateProvider.useLocalStorage();
     $translateProvider.useSanitizeValueStrategy('escape');
     
-    // if (constants.DEBUG) {
     //   $translateProvider.useMissingTranslationHandlerLog();
     // }
   }
