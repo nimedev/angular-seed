@@ -30,15 +30,17 @@
       // Box-model
       margin-left: $headermargin-xs;
       padding: $logopadding;
-      width: $header-xs * 1.55 - $logopadding * 2;
-      height: $header-xs;
+      line-height: $header-xs;
+      
+      // Typography
+      color: $white;
+      font-size: fs(medium);
       
       // Responsive
       @include respond-to(small) {
         // Box-model
         margin-left: $headermargin-sm;
-        width: $header-sm * 1.55 - $logopadding * 2;
-        height: $header-sm;
+        line-height: $header-sm;
       }
     }
     
