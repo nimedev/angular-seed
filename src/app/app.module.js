@@ -20,6 +20,7 @@
   // shared components
     'i18n',
     'route',
+    'theming',
       
   // template module is added with gulp task scritps
     'templates'
