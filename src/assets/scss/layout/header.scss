@@ -3,6 +3,13 @@
 \*------------------------------------*/
 
 .app-header {
+  // Positioning
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  
   // Box-model
   height: $header-xs;
   
@@ -34,7 +41,7 @@
       
       // Typography
       color: $white;
-      font-size: fs(medium);
+      font-size: fs(big);
       
       // Responsive
       @include respond-to(small) {

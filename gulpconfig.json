@@ -1,6 +1,6 @@
 {
   "flags": {
-    "offline": false,
+    "offline": true,
     "lintJscs": true,
     "lintJshint": true,
     "autoprefixer": true,

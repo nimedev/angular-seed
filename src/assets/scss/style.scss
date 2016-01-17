@@ -39,14 +39,8 @@
  */
 @import "layout/site.scss";
 @import "layout/header.scss";
-@import "layout/footer.scss";
-@import "layout/headerimage.scss";
-@import "layout/news.scss";
-// @import "layout/navegacion.scss";
-// @import "layout/articles.scss";
-// @import "layout/admin-area.scss";
-@import "layout/landing.scss";
-@import "layout/signup.scss";
+@import "layout/sidenav.scss";
+@import "layout/content.scss";
 
 /**
  * Abstractions and objects

@@ -1,0 +1,28 @@
+/*------------------------------------*\
+    $SIDENAV
+\*------------------------------------*/
+
+.app-nav {
+  // Positioning
+  display: none;
+  
+  // Visual
+  background-color: $white;
+  
+  // Responsive
+  @include respond-to(small) {
+    // Positioning
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    
+    // Box-model
+    display: block;
+    width: $sidenavwidth-sm;
+    height: 100%;
+  }
+  @include respond-to(medium) {
+    width: $sidenavwidth-md;
+  }
+}

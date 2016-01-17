@@ -1,0 +1,26 @@
+/*------------------------------------*\
+    $CONTENT
+\*------------------------------------*/
+
+.app-content {
+  // Positioning
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  
+  // Box-model
+  margin-top: $header-xs;
+  min-height: 100%;
+  
+  // Responsive
+  @include respond-to(small) {
+    margin-top: $header-sm;
+    margin-left: $sidenavwidth-sm;
+  }
+  @include respond-to(medium) {
+    margin-left: $sidenavwidth-md;
+  }
+}
