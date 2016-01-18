@@ -2,40 +2,44 @@
     $SIDENAV
 \*------------------------------------*/
 
-.app-nav,
-.app-nav.nav-closed {
+app-sidenav {
   // Positioning
   position: absolute;
   top: 0;
-  right: 0;
   bottom: 0;
   left: 0;
   
   // Box-model
   display: flex;
+  
+  // Responsive
+  @include respond-to(small) {
+    position: static;
+  }
+}
+
+.app-nav,
+.app-nav.nav-closed {
+  // Box-model
+  overflow-y: auto;
   width: 0;
   
   // Visual
-  background-color: $backdrop;
+  background-color: $white;
 }
 
 .app-nav.nav-open {
   // Box-model
-  width: 100%;
+  width: $sidenavwidth-md;
 }
 
 @include respond-to(small) {
   .app-nav,
   .app-nav.nav-closed {
-    // Positioning
-    position: static;
-    
-    // Box-model
     width: $sidenavwidth-sm;
   }
   
   .app-nav.nav-open {
-    // Box-model
     width: $sidenavwidth-md;
   }
 }
@@ -47,22 +51,6 @@
   }
   
   .app-nav.nav-closed {
-    // Box-model
     width: 0;
   }
 }
-
-  .nav-content {
-    // Box-model
-    overflow-y: auto;
-    width: 100%;
-    margin-right: calc(100% - 210px);
-    
-    // Visual
-    background-color: $white;
-    
-    // Responsive
-    @include respond-to(small) {
-      margin-right: 0;
-    }
-  }
