@@ -10,6 +10,7 @@
   angular
     .module('angular-seed')
     .component('appHomeView', {
+      restrict: 'E',
       templateUrl: 'app/components/home/home.tmpl.html'
     });
 })();
