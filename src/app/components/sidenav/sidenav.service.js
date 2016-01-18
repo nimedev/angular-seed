@@ -16,7 +16,7 @@
   function Service() {
     var service = {
       // factory fields
-      closed: false,
+      closed: true,
       
       // factory functions
       toggle: toggle

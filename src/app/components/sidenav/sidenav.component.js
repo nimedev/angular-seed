@@ -16,15 +16,16 @@
       templateUrl: 'app/components/sidenav/sidenav.tmpl.html'
     });
 
-  Controller.$inject = ['sideNav'];
+  Controller.$inject = ['$window', 'sideNav'];
 
   /**
    * controller for sidenav component.
    * @name Controller
    * @memberof appSidenav
+   * @param {Object} $window - to get intial size.
    * @param {Object} sideNav - to control open/close of sidenav.
    */
-  function Controller(sideNav) {
+  function Controller($window, sideNav) {
     var vm = this;
 
     /** controller fields */
@@ -38,7 +39,10 @@
     ////////////
     /** init function */
     function activate() {
-
+      // check 
+      if($window.innerWidth >= 960) {
+        sideNav.closed = false;
+      }
     }
     
     /** toggle sidenav */
