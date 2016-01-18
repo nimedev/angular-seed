@@ -29,8 +29,10 @@
 
   <div class="app-container">
     <header class="app-header bc-primary-h2" app-header></header>
-    <nav class="app-nav" app-sidenav></nav>
-    <main class="app-content" ng-view></main>
+    <div class="app-body">
+      <nav class="app-nav" app-sidenav></nav>
+      <main class="app-content" ng-view></main>
+    </div>
   </div>
 
   <!-- JS -->

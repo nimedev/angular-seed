@@ -3,13 +3,6 @@
 \*------------------------------------*/
 
 .app-header {
-  // Positioning
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 3;
-  
   // Box-model
   height: $header-xs;
   
@@ -17,7 +10,7 @@
   background-color: cp($primary, df);
   
   // Responsive
-  @include respond-to(small) {
+  @include respond-to(medium) {
     height: $header-sm;
   }
 }
@@ -26,8 +19,6 @@
     // Box-model
     display: flex;
     align-items: center;
-    margin: 0 auto;
-    max-width: map-get($breakpoints, large);
     height: 100%;
   }
   
