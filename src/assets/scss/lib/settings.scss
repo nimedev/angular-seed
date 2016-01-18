@@ -13,11 +13,14 @@
  * true: use, false: don't use.
  */
 
+$include-buttons:     true!default;
+$include-debug:       false!default;
+$include-imgclass:    false!default;
+$include-tables:      false!default;
+$include-whiteframes: true!default;
 // $incluir-grid:          false!default;
-$include-buttons:  true!default;
 // $incluir-navegacion:    true!default;
 // $incluir-paginacion:    false!default;
-$include-tables:   false!default;
 // $incluir-texturas:      true!default;
 // $incluir-flexbox:       true!default;
 // $incluir-fonticon:      false!default;
@@ -35,8 +38,6 @@ $include-tables:   false!default;
 // $incluir-slide:           false!default;
 // $incluir-error:           false!default;
 // $incluir-checkbox-list:  false!default;
-$include-imgclass: false!default;
-$include-debug:    false!default;
 
 /**
  *
@@ -260,8 +261,8 @@ $white:     rgb(255,255,255);
 /** 
  * Web
  */
-// $background:       $lightergrey;
-$background:       #EBEEF0;
+$background:       $lightergrey;
+// $background:       #EBEEF0;
 $textcolor:        $darkergrey;
 $textcolor-strong: $black;
 $backdrop:         rgba(33,33,33,0.48);
