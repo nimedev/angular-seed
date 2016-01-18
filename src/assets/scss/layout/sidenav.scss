@@ -2,7 +2,7 @@
     $SIDENAV
 \*------------------------------------*/
 
-app-sidenav {
+.app-sidenav {
   // Positioning
   position: absolute;
   top: 0;
@@ -18,12 +18,12 @@ app-sidenav {
   }
 }
 
-.nav-backdrop {
+.sidenav-backdrop {
   // Box-model
   display: none;
 }
 
-.nav-backdrop.nav-open {
+.sidenav-backdrop.nav-open {
   // Positioning
   position: absolute;
   top: 0;
@@ -44,8 +44,8 @@ app-sidenav {
   }
 }
 
-.app-nav,
-.app-nav.nav-closed {
+.sidenav-content,
+.sidenav-content.nav-closed {
   // Positioning
   z-index: 2;
   
@@ -60,29 +60,29 @@ app-sidenav {
   transition: width .3s;
 }
 
-.app-nav.nav-open {
+.sidenav-content.nav-open {
   // Box-model
   width: $sidenavwidth-md;
 }
 
 @include respond-to(small) {
-  .app-nav,
-  .app-nav.nav-closed {
+  .sidenav-content,
+  .sidenav-content.nav-closed {
     width: $sidenavwidth-sm;
   }
   
-  .app-nav.nav-open {
+  .sidenav-content.nav-open {
     width: $sidenavwidth-md;
   }
 }
   
 @include respond-to(medium) {
-  .app-nav,
-  .app-nav.nav-open {
+  .sidenav-content,
+  .sidenav-content.nav-open {
     width: $sidenavwidth-md;
   }
   
-  .app-nav.nav-closed {
+  .sidenav-content.nav-closed {
     width: 0;
   }
 }

@@ -12,7 +12,7 @@
     .component('appSidenav', {
       controller: Controller,
       controllerAs: 'vm',
-      restrict: 'E',
+      restrict: 'A',
       templateUrl: 'app/components/sidenav/sidenav.tmpl.html'
     });
 
