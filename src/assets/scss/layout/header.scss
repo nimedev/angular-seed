@@ -24,16 +24,14 @@
 
   .header__wrapper {
     // Box-model
-    margin-right: auto;
-    margin-left: auto;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
     max-width: map-get($breakpoints, large);
     height: 100%;
   }
   
     .header__logo {
-      // Positioning
-      float: left;
-      
       // Box-model
       margin-left: $headermargin-xs;
       padding: $logopadding;
@@ -48,52 +46,5 @@
         // Box-model
         margin-left: $headermargin-sm;
         line-height: $header-sm;
-      }
-    }
-    
-    .header__nav {
-      // Positioning
-      float: right;
-      
-      // Box-model
-      margin-right: $headermargin-xs;
-      
-      // inner list
-      ul {
-        // Box-model
-        margin: 0;
-        padding: 0;
-        
-        // Visual
-        list-style: none;
-      }
-      
-      // Responsive
-      @include respond-to(small) {
-        margin-right: $headermargin-sm;
-      }
-    }
-    
-    .header__nav__item {
-      // Box-model
-      display: inline-block;
-      margin-left: 16px;
-      
-      // inner link
-      .link {
-        // Box-model
-        line-height: $header-xs;
-        
-        // Typography
-        color: $white;
-        
-        // Responsive
-        @include respond-to(small) {
-          // Box-model
-          line-height: $header-sm;
-          
-          // Typography
-          font-size: fs(medium);
-        }
       }
     }
