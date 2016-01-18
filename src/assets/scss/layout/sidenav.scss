@@ -55,6 +55,9 @@ app-sidenav {
   
   // Visual
   background-color: $white;
+  
+  // Misc
+  transition: width .4s;
 }
 
 .app-nav.nav-open {
