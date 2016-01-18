@@ -152,7 +152,7 @@ $header-sm: 4rem;
 $logopadding: 0;
 
 // sidenav
-$sidenavwidth-sm: 3.5rem;
+$sidenavwidth-sm: 3.25rem;
 $sidenavwidth-md: 13.125rem;
 
 // footer
@@ -263,6 +263,7 @@ $white:     rgb(255,255,255);
 $background:       $lightergrey;
 $textcolor:        $darkergrey;
 $textcolor-strong: $black;
+$backdrop:         rgba(33,33,33,0.48);
 
 // Default material shadows (500, 300, 800 and A100
 // Pink

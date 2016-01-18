@@ -1,5 +1,5 @@
 /** appHeader component */
-(function() {
+(function () {
   'use strict';
 
   /**
@@ -16,20 +16,21 @@
       templateUrl: 'app/components/header/header.tmpl.html'
     });
 
-  Controller.$inject = ['$location'];
+  Controller.$inject = ['sideNav'];
 
   /**
-   * controller for header directive.
+   * controller for header component.
    * @name Controller
    * @memberof appHeader
-   * @param {Object} $location - to redirect to another link.
+   * @param {Object} sideNav - to toggle sidenav visibility.
    */
-  function Controller($location) {
+  function Controller(sideNav) {
     var vm = this;
 
     /** controller fields */
 
     /** controller methods */
+    vm.toggleSidenav = toggleSidenav;
 
     activate();
 
@@ -37,6 +38,11 @@
     /** init function */
     function activate() {
 
+    }
+    
+    /** toggle sidenav visibility */
+    function toggleSidenav() {
+      sideNav.toggle();
     }
   }
 })();

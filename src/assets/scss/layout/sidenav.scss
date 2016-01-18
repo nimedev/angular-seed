@@ -2,20 +2,67 @@
     $SIDENAV
 \*------------------------------------*/
 
-.app-nav {
+.app-nav,
+.app-nav.nav-closed {
   // Positioning
-  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  
+  // Box-model
+  display: flex;
+  width: 0;
   
   // Visual
-  background-color: $white;
-  
-  // Responsive
-  @include respond-to(small) {
+  background-color: $backdrop;
+}
+
+.app-nav.nav-open {
+  // Box-model
+  width: 100%;
+}
+
+@include respond-to(small) {
+  .app-nav,
+  .app-nav.nav-closed {
+    // Positioning
+    position: static;
+    
     // Box-model
-    display: block;
     width: $sidenavwidth-sm;
   }
-  @include respond-to(medium) {
+  
+  .app-nav.nav-open {
+    // Box-model
     width: $sidenavwidth-md;
   }
 }
+  
+@include respond-to(medium) {
+  .app-nav,
+  .app-nav.nav-open {
+    width: $sidenavwidth-md;
+  }
+  
+  .app-nav.nav-closed {
+    // Box-model
+    width: 0;
+  }
+}
+
+  .nav-content {
+    // Box-model
+    overflow-y: auto;
+    width: 100%;
+    margin-right: calc(100% - 210px);
+    
+    // Visual
+    background-color: $white;
+    
+    // Responsive
+    @include respond-to(small) {
+      margin-right: 0;
+    }
+  }
