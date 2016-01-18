@@ -22,7 +22,7 @@ var cdnizerArray = config.cdnizer;
 var flags = config.flags;
 var paths = config.paths;
 var templateCache = config.templateCache;
-var reloadTasks;
+var tasks;
 
 /** Config de autoprefixer. CSS compatibility */
 var AUTOPREFIXER_BROWSERS = [
@@ -41,41 +41,29 @@ var AUTOPREFIXER_BROWSERS = [
  * CLEAN TASKS
  */
 /** clean output directory */
-gulp.task('clean', function () {
-  del.sync(paths.clean);
-});
+gulp.task('clean', () => del.sync(paths.clean));
 
 
 /**
  * FRONT-END TASKS
  */
 /** Runs i18nTask without using browser-sync */
-gulp.task('i18n', function () {
-  return i18nTask();
-});
+gulp.task('i18n', () => i18nTask());
 
 /** Runs optimizeImageTask without using browser-sync */
-gulp.task('images', function () {
-  return optimizeImageTask();
-});
+gulp.task('images', () => optimizeImageTask());
 
 /** Runs optimizeHtmlTask without using browser-sync */
-gulp.task('html', function () {
-  return optimizeHtmlTask();
-});
+gulp.task('html', () => optimizeHtmlTask());
 
 /** Runs scriptsTask without using browser-sync */
-gulp.task('scripts', ['lint'], function () {
-  return scriptsTask();
-});
+gulp.task('scripts', ['lint'], () => scriptsTask());
 
 /** Runs stylesTask without using browser-sync */
-gulp.task('styles', function () {
-  return stylesTask();
-});
+gulp.task('styles', () => stylesTask());
 
 /** Lint JavaScript */
-gulp.task('lint', function () {
+gulp.task('lint', () => {
   return gulp.src(paths.front.lint.src)
     .pipe($.if(flags.lintJscs, $.jscs()))
     .pipe($.if(flags.lintJscs, $.jscsStylish.combineWithHintResults()))
@@ -91,26 +79,30 @@ gulp.task('build:front', ['i18n', 'images', 'html', 'scripts', 'styles']);
  * WATCH TASKS
  */
 /** Runs scriptsTask without using browser-sync and uglify */
-gulp.task('scripts:watch', ['lint'], function () {
-  return scriptsTask(false, true);
-});
+gulp.task('scripts:watch', ['lint'], () => scriptsTask(false, true));
 
 /** watch scripts and styles */
-gulp.task('watch', ['i18n', 'images', 'html', 'scripts:watch', 'styles'], function () {
+tasks = ['i18n', 'images', 'html', 'scripts:watch', 'styles'];
+gulp.task('watch', tasks, () => {
   // watch for changes in i18n files
-  gulp.watch(paths.front.i18n.watch, ['i18n']);
-
+  $.watch(paths.front.i18n.watch,
+    $.batch((events, done) => gulp.start('i18n', done)));
+  
   // watch for changes in images
-  gulp.watch(paths.front.images.watch, ['images']);
+  $.watch(paths.front.images.watch,
+    $.batch((events, done) => gulp.start('images', done)));
 
   // watch for changes in html
-  gulp.watch(paths.front.html.watch, ['html']);
+  $.watch(paths.front.html.watch,
+    $.batch((events, done) => gulp.start('html', done)));
 
   // watch for changes in script files
-  gulp.watch(paths.front.scripts.watch, ['scripts:watch']);
+  $.watch(paths.front.scripts.watch,
+    $.batch((events, done) => gulp.start('scripts:watch', done)));
 
   // watch for changes in styles files
-  gulp.watch(paths.front.styles.watch, ['styles']);
+  $.watch(paths.front.styles.watch,
+    $.batch((events, done) => gulp.start('styles', done)));
 });
 
 
@@ -118,39 +110,29 @@ gulp.task('watch', ['i18n', 'images', 'html', 'scripts:watch', 'styles'], functi
  * RELOAD TASKS
  */
 /** Runs i18nTask using browser-sync */
-gulp.task('i18n:reload', function () {
-  return i18nTask(true);
-});
+gulp.task('i18n:reload', () => i18nTask(true));
 
 /** Runs optimizeImageTask using browser-sync */
-gulp.task('images:reload', function () {
-  return optimizeImageTask(true);
-});
+gulp.task('images:reload', () => optimizeImageTask(true));
 
 /** Runs optimizeHtmlTask using browser-sync */
-gulp.task('html:reload', function () {
-  return optimizeHtmlTask(true);
-});
+gulp.task('html:reload', () => optimizeHtmlTask(true));
 
 /** Runs scriptsTask using browser-sync without uglify */
-gulp.task('scripts:reload', ['lint'], function () {
-  return scriptsTask(true, true);
-});
+gulp.task('scripts:reload', ['lint'], () => scriptsTask(true, true));
 
 /** Runs stylesTask using browser-sync */
-gulp.task('styles:reload', function () {
-  return stylesTask(true);
-});
+gulp.task('styles:reload', () => stylesTask(true));
 
 /** watch with browser reload */
-reloadTasks = [
+tasks = [
   'i18n:reload',
   'images:reload',
   'html:reload',
   'scripts:reload',
   'styles:reload'
 ];
-gulp.task('server', reloadTasks, function () {
+gulp.task('server', tasks, () => {
   // config browser-sync module
   browserSync.init({
     open: false,
@@ -165,26 +147,31 @@ gulp.task('server', reloadTasks, function () {
   });
 
   // watch for changes in i18n files
-  gulp.watch(paths.front.i18n.watch, ['i18n:reload']);
-
+  $.watch(paths.front.i18n.watch,
+    $.batch((events, done) => gulp.start('i18n:reload', done)));
+  
   // watch for changes in images
-  gulp.watch(paths.front.images.watch, ['images:reload']);
+  $.watch(paths.front.images.watch,
+    $.batch((events, done) => gulp.start('images:reload', done)));
 
   // watch for changes in html
-  gulp.watch(paths.front.html.watch, ['html:reload']);
+  $.watch(paths.front.html.watch,
+    $.batch((events, done) => gulp.start('html:reload', done)));
 
   // watch for changes in script files
-  gulp.watch(paths.front.scripts.watch, ['scripts:reload']);
+  $.watch(paths.front.scripts.watch,
+    $.batch((events, done) => gulp.start('scripts:reload', done)));
 
   // watch for changes in styles files
-  gulp.watch(paths.front.styles.watch, ['styles:reload']);
+  $.watch(paths.front.styles.watch,
+    $.batch((events, done) => gulp.start('styles:reload', done)));
 });
 
 
 /**
  * DEFAULT TASK
  */
-gulp.task('default', function (cb) {
+gulp.task('default', (cb) => {
   del.sync(paths.clean);
   runSequence(['build:front'], cb);
 });
@@ -282,7 +269,7 @@ function stylesTask(reload) {
   var name = 'style.min.css';
   del.sync(paths.front.styles.clean);
   return gulp.src(paths.front.styles.src)
-    .pipe($.sass().on('error', function (err) {
+    .pipe($.sass().on('error', (err) => {
       console.log(err.toString());
       this.emit('end');
     }))
