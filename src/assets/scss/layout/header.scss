@@ -34,8 +34,10 @@
       
       // Responsive
       @include respond-to(small) {
-        // Box-model
         margin-left: $headermargin-sm;
+      }
+      
+      @include respond-to(medium) {
         line-height: $header-sm;
       }
     }

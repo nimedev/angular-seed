@@ -18,8 +18,37 @@ app-sidenav {
   }
 }
 
+.nav-backdrop {
+  // Box-model
+  display: none;
+}
+
+.nav-backdrop.nav-open {
+  // Positioning
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  
+  // Box-model
+  display: block;
+  width: 100vw;
+  
+  // Visual
+  background-color: $backdrop;
+  
+  // Responsive
+  @include respond-to(small) {
+    // Box-model
+    display: none;
+  }
+}
+
 .app-nav,
 .app-nav.nav-closed {
+  // Positioning
+  z-index: 2;
+  
   // Box-model
   overflow-y: auto;
   width: 0;
