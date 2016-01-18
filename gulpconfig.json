@@ -58,6 +58,7 @@
         "dest": "dist/assets/js",
         "watch": [
           "src/app/**/*.js",
+          "src/app/**/*.html",
           "src/assets/i18n/**/*.js",
           "src/assets/js/**/*.js"
         ]
