@@ -1,0 +1,12 @@
+/*------------------------------------*\
+    $HOME VIEW
+\*------------------------------------*/
+
+.home-view {
+  // extend styles
+  @extend .content-wrapper;
+  @extend .whiteframe-1;
+  
+  // Box-model
+  padding: .5em;
+}
