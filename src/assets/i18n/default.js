@@ -5,5 +5,6 @@ var defaultLanguage = {
     "HELP": "Help",
     "SETTINGS": "Settings"
   },
-  "HOME": "Welcome!"
+  "HOME": "Welcome!",
+  "HELP": "Help"
 };
