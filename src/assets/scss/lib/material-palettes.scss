@@ -1,0 +1,104 @@
+/*------------------------------------*\
+    $MATERIAL COLOR PALETTES
+\*------------------------------------*/
+
+/** 
+ * Default material shadows for primary colors:
+ * (500, 300, 800 and A100) 
+ */
+// Pink
+$pink-primary: (
+  "df": #E91E63,
+  "h1": #F06292,
+  "h2": #AD1457,
+  "h3": #FF80AB
+);
+
+// Purple 
+$purple-primary: (
+  "df": #9C27B0,
+  "h1": #BA68C8,
+  "h2": #6A1B9A,
+  "h3": #EA80FC
+);
+
+// Blue
+$blue-primary: (
+  "df": #2196F3,
+  "h1": #64B5F6,
+  "h2": #1565C0,
+  "h3": #82B1FF
+);
+
+// Gray
+$gray-primary: (
+  "df": #9E9E9E,
+  "h1": #E0E0E0,
+  "h2": #424242,
+  "h3": #FAFAFA
+);
+
+
+/**
+ * Default material shadows for accent colors:
+ * (A200, A100, A400 and A700)
+ */
+// Pink
+$pink-accent: (
+  "df": #ff4081,
+  "h1": #ff80ab,
+  "h2": #f50057,
+  "h3": #c51162
+);
+
+// Purple
+$purple-accent: (
+  "df": #e040fb,
+  "h1": #ea80fc,
+  "h2": #d500f9,
+  "h3": #aa00ff
+);
+
+// Deep purple
+$deep-purple-accent: (
+  "df": #7c4dff,
+  "h1": #b388ff,
+  "h2": #651fff,
+  "h3": #6200ea
+);
+
+// Blue
+$blue-accent: (
+  "df": #448aff,
+  "h1": #82b1ff,
+  "h2": #2979ff,
+  "h3": #2962ff
+);
+
+// Light green
+$light-green-accent: (
+  "df": #b2ff59,
+  "h1": #ccff90,
+  "h2": #76ff03,
+  "h3": #64dd17
+);
+
+// Lime
+$lime-accent: (
+  "df": #eeff41,
+  "h1": #f4ff81,
+  "h2": #c6ff00,
+  "h3": #aeea00
+);
+
+/**
+ * Default material shadows for warning colors:
+ * (500, 300, 800 and A100)
+ */
+// Red
+$red-warn: (
+  "df": #F44336,
+  "h1": #E57373,
+  "h2": #C62828,
+  "h3": #FF8A80
+);

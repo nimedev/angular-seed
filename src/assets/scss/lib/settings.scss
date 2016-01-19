@@ -269,92 +269,10 @@ $textcolor:        $darkergrey;
 $textcolor-strong: $black;
 $backdrop:         rgba(33,33,33,0.48);
 
-// Default material shadows (500, 300, 800 and A100
-// Pink
-/*$primary: (
-  "df": #E91E63,
-  "h1": #F06292,
-  "h2": #AD1457,
-  "h3": #FF80AB
-);*/
-// Purple
-/*$primary: (
-  "df": #9C27B0,
-  "h1": #BA68C8,
-  "h2": #6A1B9A,
-  "h3": #EA80FC
-);*/
-// Blue
-/*$primary: (
-  "df": #2196F3,
-  "h1": #64B5F6,
-  "h2": #1565C0,
-  "h3": #82B1FF
-);*/
-// Gray
-$primary: (
-  "df": #9E9E9E,
-  "h1": #E0E0E0,
-  "h2": #424242,
-  "h3": #FAFAFA
-);
-/*$primaryclr:    #673AB7;
-$primaryclr-h1: #9575CD;
-$primaryclr-h2: #4527A0;
-$primaryclr-h3: #B388FF;*/
-
-// default material shadows (A200, A100, A400 and A700
-// Pink
-/*$accent: (
-  "df": #ff4081,
-  "h1": #ff80ab,
-  "h2": #f50057,
-  "h3": #c51162
-);*/
-// Purple
-/*$accent: (
-  "df": #e040fb,
-  "h1": #ea80fc,
-  "h2": #d500f9,
-  "h3": #aa00ff
-);*/
-// Deep purple
-/*$accent: (
-  "df": #7c4dff,
-  "h1": #b388ff,
-  "h2": #651fff,
-  "h3": #6200ea
-);*/
-// Blue
-/*$accent: (
-  "df": #448aff,
-  "h1": #82b1ff,
-  "h2": #2979ff,
-  "h3": #2962ff
-);*/
-// Light green
-/*$accent: (
-  "df": #b2ff59,
-  "h1": #ccff90,
-  "h2": #76ff03,
-  "h3": #64dd17
-);*/
-// Lime
-$accent: (
-  "df": #eeff41,
-  "h1": #f4ff81,
-  "h2": #c6ff00,
-  "h3": #aeea00
-);
-
-// default material shadows (500, 300, 800 and A100
-// Red
-$warn: (
-  "df": #F44336,
-  "h1": #E57373,
-  "h2": #C62828,
-  "h3": #FF8A80
-);
+// Material themming
+$primary: $gray-primary;
+$accent: $lime-accent;
+$warn: $red-warn;
 
 /**
  * Links 

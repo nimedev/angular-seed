@@ -19,7 +19,7 @@
     // angular-material Theming
     $mdThemingProvider.theme('default')
     /** default: 500, hue-1: 300, hue-2: 800, hue-3: A100 */
-      .primaryPalette('blue')
-      .accentPalette('deep-orange');
+      .primaryPalette('grey')
+      .accentPalette('lime');
   }
 })();
