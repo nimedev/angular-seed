@@ -1,4 +1,9 @@
 // Default language EN (English)
 var defaultLanguage = {
-  "HOME": "Home view!"
+  "NAV": {
+    "HOME": "Home",
+    "HELP": "Help",
+    "SETTINGS": "Settings"
+  },
+  "HOME": "Welcome!"
 };

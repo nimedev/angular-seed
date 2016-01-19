@@ -1,48 +1,23 @@
 <div class="sidenav-backdrop" ng-class="{'nav-open': !vm.sidenav.closed}" ng-click="vm.toggle()"></div>
 <div class="sidenav-content" ng-class="{'nav-closed': vm.sidenav.closed, 'nav-open': !vm.sidenav.closed}">
-  NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br> NAV
-  <br>
+  <ul class="menu-content">
+    <li>
+      <md-button class="menu-item" href="/">
+        <md-icon class="menu-icon">home</md-icon>
+        <span class="menu-text" translate="NAV.HOME"></span>
+      </md-button>
+    </li>
+    <li>
+      <md-button class="menu-item" href="/help">
+        <md-icon class="menu-icon">help</md-icon>
+        <span class="menu-text" translate="NAV.HELP"></span>
+      </md-button>
+    </li>
+    <li>
+      <md-button class="menu-item" href="">
+        <md-icon class="menu-icon">settings</md-icon>
+        <span class="menu-text" translate="NAV.SETTINGS"></span>
+      </md-button>
+    </li>
+  </ul>
 </div>

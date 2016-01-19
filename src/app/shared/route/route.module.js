@@ -22,9 +22,9 @@
       .when('/', {
         template: '<app-home-view></app-home-view>'
       })
-    // about view
-      .when('/about', {
-        template: '<app-about-view></app-about-view>'
+    // help view
+      .when('/help', {
+        template: '<app-help-view></app-help-view>'
       })
     // redirect path
       .otherwise({
