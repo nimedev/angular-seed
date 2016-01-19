@@ -38,15 +38,15 @@
  * Site layout
  */
 @import "layout/site.scss";
-@import "layout/header.scss";
-@import "layout/sidenav.scss";
 @import "layout/content.scss";
 
 /**
  * Components
  */
-@import "components/help.scss";
-@import "components/home.scss";
+@import "../../app/components/header/header.scss";
+@import "../../app/components/help/help.scss";
+@import "../../app/components/home/home.scss";
+@import "../../app/components/sidenav/sidenav.scss";
  
 /**
  * Abstractions and objects
