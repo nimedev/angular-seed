@@ -68,7 +68,10 @@
         "clean": "dist/assets/css/**",
         "src": "src/assets/scss/style.scss",
         "dest": "dist/assets/css",
-        "watch": "src/assets/scss/**/*"
+        "watch": [
+          "src/app/**/*.scss",
+          "src/assets/scss/**/*"
+        ]
       },
       "templates": {
         "src": "src/app/**/*.html"
