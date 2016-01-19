@@ -138,7 +138,7 @@ gulp.task('server', tasks, () => {
     open: false,
     port: config.server.port,
     server: {
-      baseDir: 'dist',
+      baseDir: config.server.baseDir,
       middleware: [historyApiFallback()],
       routes: {
         '/bower_components': 'bower_components'
