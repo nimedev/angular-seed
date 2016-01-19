@@ -269,10 +269,7 @@ function stylesTask(reload) {
   var name = 'style.min.css';
   del.sync(paths.front.styles.clean);
   return gulp.src(paths.front.styles.src)
-    .pipe($.sass().on('error', (err) => {
-      console.log(err.toString());
-      this.emit('end');
-    }))
+    .pipe($.sass().on('error', $.sass.logError))
     .pipe($.rename(name))
     .pipe($.if(flags.autoprefixer, $.autoprefixer({ browsers: AUTOPREFIXER_BROWSERS })))
     .pipe($.if(flags.mergeMediaQueries, $.mergeMediaQueries()))
