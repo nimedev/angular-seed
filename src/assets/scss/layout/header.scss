@@ -26,6 +26,11 @@
       color: white;
     }
     
+    // space
+    .space {
+      flex: 1;
+    }
+    
     // Brand
     .header__logo {
       // Box-model
@@ -45,6 +50,11 @@
       @include respond-to(medium) {
         line-height: $header-sm;
       }
+    }
+    
+    // Language list
+    lang-list md-icon {
+      color: white;
     }
   }
   

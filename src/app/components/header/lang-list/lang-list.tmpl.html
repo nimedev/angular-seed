@@ -1,0 +1,12 @@
+<md-menu md-position-mode="target-right target">
+  <md-button aria-label="Open language menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+    <md-icon md-menu-origin>language</md-icon>
+  </md-button>
+  <md-menu-content width="4">
+    <md-menu-item ng-repeat="lang in vm.languages">
+      <md-button ng-click="vm.changeLanguage(lang)">
+        {{'HEADER.LANG.' + lang | translate}}
+      </md-button>
+    </md-menu-item>
+  </md-menu-content>
+</md-menu>
