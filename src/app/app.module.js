@@ -1,29 +1,57 @@
-/** @module app */
+/**
+ * Main module
+ * @module 'angular-seed' 
+ */
 (function () {
   'use strict';
+  
+  /** Constants object */
+  var constants = {
+    // server base url
+    REST_URL: '',
+
+    // Debug mode
+    DEBUG: true
+  };
 
   angular
     .module('angular-seed', [
-    // angular modules
+    // Angular modules
       'ngAnimate',
       'ngAria',
       'ngCookies',
       'ngMessages',
       'ngResource',
+      'ngRoute',
       'ngSanitize',
 
-    // comunity modules
+    // Comunity modules
 
-    // components
-      'header',
-      'sidenav',
+    // Components
+      'base',
+      
+    // Views components
+      'help',
+      'home',
 
-    // shared components
+    // Shared components
       'i18n',
-      'route',
       'theming',
       
-    // template module is added with gulp task scritps
+    // Template module is added with gulp task scritps
       'templates'
-    ]);
+    ])
+    .config(config)
+    .constant('constants', constants);
+    
+    
+  /** Config function */
+  config.$inject = ['$routeProvider'];
+
+  function config($routeProvider) {
+    // Redirect path to * urls
+    $routeProvider.otherwise({
+      redirectTo: '/'
+    });
+  }
 })();

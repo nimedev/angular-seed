@@ -3,12 +3,12 @@
   'use strict';
 
   /**
-   * component for home view
+   * Component for home view
    * @name appHomeView
-   * @memberof angular-seed
+   * @memberof home
    */
   angular
-    .module('angular-seed')
+    .module('home')
     .component('appHomeView', {
       restrict: 'E',
       templateUrl: 'app/components/home/home.tmpl.html'

@@ -1,14 +1,14 @@
 /** appHelpView component */
-(function (){
+(function () {
   'use strict';
   
   /**
-   * component for about view
+   * Component for about view
    * @name appHelpView
-   * @memberof angular-seed
+   * @memberof help
    */
   angular
-    .module('angular-seed')
+    .module('help')
     .component('appHelpView', {
       restrict: 'E',
       templateUrl: 'app/components/help/help.tmpl.html'
