@@ -79,7 +79,8 @@ a:active {
 /**
  * From here, write positioning styles and details for web site. Enjoy!
  */
- 
+
+/** app content */ 
 .app-body {
   // Positioning
   position: relative;
@@ -90,10 +91,26 @@ a:active {
   z-index: 1;
   
   // Box-model
+  padding-top: $header-xs;
   min-height: 100%;
   
   // Misc
   transition: margin $close-delay;
+  
+  // Responsive
+  @include respond-to(small) {
+    padding-top: $header-sm;
+  }
+}
+
+.app-body.header__nav-open {
+  // Box-model
+  padding-top: $header-xs + $headernav-height;
+  
+  // Responsive
+  @include respond-to(small) {
+    padding-top: $header-sm + $headernav-height;
+  }
 }
 
 @include respond-to(small) {

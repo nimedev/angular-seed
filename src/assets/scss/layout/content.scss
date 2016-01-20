@@ -3,14 +3,7 @@
 \*------------------------------------*/
 
 .app-content {
-  // Box-model
-  margin-top: $header-xs;
   padding: $gutterwidth;
-  
-  // Responsive
-  @include respond-to(small) {
-    margin-top: $header-sm;
-  }
 }
 
   .content-wrapper {

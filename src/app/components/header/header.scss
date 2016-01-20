@@ -10,23 +10,20 @@
   right: 0;
   z-index: 2;
   
-  // Box-model
-  height: $header-xs;
-  
   // Visual
   background-color: cp($primary, df);
-  
-  // Responsive
-  @include respond-to(small) {
-    height: $header-sm;
-  }
 }
 
   .header__wrapper {
     // Box-model
     display: flex;
     align-items: center;
-    height: 100%;
+    height: $header-xs;
+    
+    // Responsive
+    @include respond-to(small) {
+      height: $header-sm;
+    }
     
     // menu button
     .menu-btn md-icon {
@@ -60,5 +57,15 @@
     lang-list md-icon {
       color: white;
     }
+  }
+  
+  .header__nav {
+    // Box-model
+    min-width: 100%;
+    height: 0;
+  }
+  
+  .header__nav.header__nav-open {
+    height: $headernav-height;
   }
   

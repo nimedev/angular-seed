@@ -28,6 +28,12 @@
   }
 }
 
+@include respond-to(small) {
+  .app-sidenav.header__nav-open {
+    padding-top: $header-sm + $headernav-height;
+  }
+}
+
 .sidenav-backdrop {
   // Box-model
   display: none;
