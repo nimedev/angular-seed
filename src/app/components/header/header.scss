@@ -3,6 +3,13 @@
 \*------------------------------------*/
 
 .app-header {
+  // Positioning
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  
   // Box-model
   height: $header-xs;
   
@@ -10,7 +17,7 @@
   background-color: cp($primary, df);
   
   // Responsive
-  @include respond-to(medium) {
+  @include respond-to(small) {
     height: $header-sm;
   }
 }
@@ -45,9 +52,6 @@
       // Responsive
       @include respond-to(small) {
         margin-left: $headermargin-sm;
-      }
-      
-      @include respond-to(medium) {
         line-height: $header-sm;
       }
     }

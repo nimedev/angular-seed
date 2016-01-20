@@ -4,17 +4,27 @@
 
 .app-sidenav {
   // Positioning
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
+  z-index: 3;
   
   // Box-model
   display: flex;
+  padding-top: 0;
   
   // Responsive
   @include respond-to(small) {
-    position: static;
+    // Positioning
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    
+    // Box-model
+    height: 100%;
+    padding-top: $header-sm;
   }
 }
 
@@ -51,13 +61,14 @@
   
   // Box-model
   overflow-y: auto;
+  overflow-x: hidden;
   width: 0;
   
   // Visual
   background-color: $white;
   
   // Misc
-  transition: width .3s;
+  transition: width $close-delay;
 }
 
 .sidenav-content.nav-open {

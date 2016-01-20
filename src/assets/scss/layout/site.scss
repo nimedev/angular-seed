@@ -46,7 +46,6 @@ html {
 
 body {
   // Box-model
-  overflow: hidden;
   margin: 0;
 	padding: 0;
 	width: 100%;
@@ -62,6 +61,14 @@ body {
 	background-color: transparent;
 }
 
+body.nav-open {
+  overflow: hidden;
+  
+  @include respond-to(small) {
+    overflow: auto;
+  }
+}
+
 a:link,
 a:visited,
 a:hover,
@@ -75,19 +82,25 @@ a:active {
  
 .app-container {
   // Positioning
-  position: absolute;
+  position: relative;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   
   // Box-model:
-  display: flex;
-  flex-direction: column;
+  overflow: hidden;
+  min-height: 100%;
 }
-.app-body {
-  // Box-model:
-  display: flex;
-  flex-direction: row;
-  flex: 1;
-}
+  .app-body {
+    // Positioning
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    
+    // Box-model
+    min-height: 100%;
+  }

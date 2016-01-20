@@ -4,9 +4,39 @@
 
 .app-content {
   // Box-model
-  overflow-y: auto;
-  flex: 1;
+  margin-top: $header-xs;
+  margin-left: 0;
   padding: $gutterwidth;
+  
+  // Misc
+  transition: margin $close-delay;
+  
+  // Responsive
+  @include respond-to(small) {
+    margin-top: $header-sm;
+  }
+}
+
+@include respond-to(small) {
+  .app-content,
+  .app-content.nav-closed {
+    margin-left: $sidenavwidth-sm;
+  }
+  
+  .app-content.nav-open {
+    margin-left: $sidenavwidth-md;
+  }
+}
+
+@include respond-to(medium) {
+  .app-content,
+  .app-content.nav-open {
+    margin-left: $sidenavwidth-md;
+  }
+  
+  .app-content.nav-closed {
+    margin-left: $sidenavwidth-sm;
+  }
 }
 
   .content-wrapper {
