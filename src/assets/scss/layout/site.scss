@@ -80,52 +80,40 @@ a:active {
  * From here, write positioning styles and details for web site. Enjoy!
  */
  
-.app-container {
+.app-body {
   // Positioning
   position: relative;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 1;
   
-  // Box-model:
-  overflow: hidden;
+  // Box-model
   min-height: 100%;
+  
+  // Misc
+  transition: margin $close-delay;
 }
-  .app-body {
-    // Positioning
-    position: relative;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    
-    // Box-model
-    min-height: 100%;
-    
-    // Misc
-    transition: margin $close-delay;
+
+@include respond-to(small) {
+  .app-body,
+  .app-body.nav-closed {
+    margin-left: $sidenavwidth-sm;
   }
   
-  @include respond-to(small) {
-    .app-body,
-    .app-body.nav-closed {
-      margin-left: $sidenavwidth-sm;
-    }
-    
-    .app-body.nav-open {
-      margin-left: $sidenavwidth-md;
-    }
+  .app-body.nav-open {
+    margin-left: $sidenavwidth-md;
   }
+}
 
-  @include respond-to(medium) {
-    .app-body,
-    .app-body.nav-open {
-      margin-left: $sidenavwidth-md;
-    }
-    
-    .app-body.nav-closed {
-      margin-left: $sidenavwidth-sm;
-    }
+@include respond-to(medium) {
+  .app-body,
+  .app-body.nav-open {
+    margin-left: $sidenavwidth-md;
   }
+  
+  .app-body.nav-closed {
+    margin-left: $sidenavwidth-sm;
+  }
+}
