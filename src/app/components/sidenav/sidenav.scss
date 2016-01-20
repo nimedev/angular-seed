@@ -60,8 +60,7 @@
   }
 }
 
-.sidenav-content,
-.sidenav-content.nav-closed {
+.sidenav-content {
   // Positioning
   z-index: 2;
   
@@ -75,31 +74,14 @@
   
   // Misc
   transition: width $close-delay;
+  
+  // Responsive
+  @include respond-to(small) {
+    width: $sidenavwidth-sm;
+  }
 }
 
 .sidenav-content.nav-open {
   // Box-model
   width: $sidenavwidth-md;
-}
-
-@include respond-to(small) {
-  .sidenav-content,
-  .sidenav-content.nav-closed {
-    width: $sidenavwidth-sm;
-  }
-  
-  .sidenav-content.nav-open {
-    width: $sidenavwidth-md;
-  }
-}
-  
-@include respond-to(medium) {
-  .sidenav-content,
-  .sidenav-content.nav-open {
-    width: $sidenavwidth-md;
-  }
-  
-  .sidenav-content.nav-closed {
-    width: $sidenavwidth-sm;
-  }
 }

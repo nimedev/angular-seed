@@ -41,9 +41,9 @@
     ////////////
     /** Init function */
     function activate() {
-      // check 
+      // Open sidenav for large screens
       if ($window.innerWidth >= sideNav.mdBreak) {
-        sideNav.closed = false;
+        sideNav.open();
       }
     }
     

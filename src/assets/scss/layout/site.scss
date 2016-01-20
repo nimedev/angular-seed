@@ -99,7 +99,14 @@ a:active {
   
   // Responsive
   @include respond-to(small) {
+    // Box model
+    margin-left: $sidenavwidth-sm;
     padding-top: $header-sm;
+    
+    // .app-body.nav-open
+    &.nav-open {
+      margin-left: $sidenavwidth-md;
+    }
   }
 }
 
@@ -110,27 +117,5 @@ a:active {
   // Responsive
   @include respond-to(small) {
     padding-top: $header-sm + $headernav-height;
-  }
-}
-
-@include respond-to(small) {
-  .app-body,
-  .app-body.nav-closed {
-    margin-left: $sidenavwidth-sm;
-  }
-  
-  .app-body.nav-open {
-    margin-left: $sidenavwidth-md;
-  }
-}
-
-@include respond-to(medium) {
-  .app-body,
-  .app-body.nav-open {
-    margin-left: $sidenavwidth-md;
-  }
-  
-  .app-body.nav-closed {
-    margin-left: $sidenavwidth-sm;
   }
 }

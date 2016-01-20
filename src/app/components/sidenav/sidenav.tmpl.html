@@ -1,5 +1,5 @@
-<div class="sidenav-backdrop" ng-class="{'nav-open': !vm.sidenav.closed}" ng-click="vm.toggle()"></div>
-<div class="sidenav-content" ng-class="{'nav-closed': vm.sidenav.closed, 'nav-open': !vm.sidenav.closed}">
+<div class="sidenav-backdrop" ng-class="vm.sidenav.cssClass" ng-click="vm.toggle()"></div>
+<div class="sidenav-content" ng-class="vm.sidenav.cssClass">
   <ul class="menu-content">
     <li>
       <md-button class="menu-item" ng-click="vm.goToLink('/')">

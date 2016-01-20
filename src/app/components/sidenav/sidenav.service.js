@@ -14,11 +14,13 @@
    * @memberof sidenav
    */
   function Service() {
+    var className = 'nav-open';
+    
     var service = {
       // factory fields
+      cssClass: '',
       smBreak: 600,
       mdBreak: 960,
-      closed: true,
       
       // factory functions
       close: close,
@@ -31,35 +33,38 @@
     ///////////////
     /** Close sidenav */
     function close() {
-      service.closed = true;
-      toggleAppContent();
+      service.cssClass = '';
+      toggleElements();
     }
     
     /** Open sidenav */
     function open() {
-      service.closed = false;
-      toggleAppContent();
+      service.cssClass = className;
+      toggleElements();
     }
     
     /** Change sidenav visibility */
     function toggle() {
-      service.closed = !service.closed;
-      toggleAppContent();
+      if (service.cssClass === '') {
+        open();
+      } else {
+        close();
+      }
     }
     
     /** HELPER FUNCTIONS */
-    /** toggle class in .app-content element */
-    function toggleAppContent() {
+    /** toggle class in body and .app-body elements */
+    function toggleElements() {
       var body = angular.element(document).find('body');
       var element = angular.element(document.querySelector('.app-body'));
-      if (service.closed) {
-        element.removeClass('nav-open');
-        element.addClass('nav-closed');
-        body.removeClass('nav-open');
+      
+      // sidenav is closed?
+      if (service.cssClass === '') {
+        body.removeClass(className);
+        element.removeClass(className);
       } else {
-        element.removeClass('nav-closed');
-        element.addClass('nav-open');
-        body.addClass('nav-open');
+        body.addClass(className);
+        element.addClass(className);
       }
     }
   }

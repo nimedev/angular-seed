@@ -55,6 +55,8 @@
     function toggleElements() {
       var body = angular.element(document.querySelector('.app-body'));
       var sidenav = angular.element(document.querySelector('.app-sidenav'));
+      
+      // header-nav is closed?
       if (service.cssClass === '') {
         body.removeClass(className);
         sidenav.removeClass(className);
