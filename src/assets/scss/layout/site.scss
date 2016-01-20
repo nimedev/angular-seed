@@ -103,4 +103,29 @@ a:active {
     
     // Box-model
     min-height: 100%;
+    
+    // Misc
+    transition: margin $close-delay;
+  }
+  
+  @include respond-to(small) {
+    .app-body,
+    .app-body.nav-closed {
+      margin-left: $sidenavwidth-sm;
+    }
+    
+    .app-body.nav-open {
+      margin-left: $sidenavwidth-md;
+    }
+  }
+
+  @include respond-to(medium) {
+    .app-body,
+    .app-body.nav-open {
+      margin-left: $sidenavwidth-md;
+    }
+    
+    .app-body.nav-closed {
+      margin-left: $sidenavwidth-sm;
+    }
   }

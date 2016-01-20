@@ -51,7 +51,7 @@
     /** toggle class in .app-content element */
     function toggleAppContent() {
       var body = angular.element(document).find('body');
-      var element = angular.element(document.querySelector('.app-content'));
+      var element = angular.element(document.querySelector('.app-body'));
       if (service.closed) {
         element.removeClass('nav-open');
         element.addClass('nav-closed');
