@@ -12,7 +12,7 @@
       controller: Controller,
       controllerAs: 'vm',
       restrict: 'E',
-      templateUrl: 'app/components/header/lang-list/lang-list.tmpl.html'
+      templateUrl: 'app/components/base/header/lang-list/lang-list.tmpl.html'
     });
 
   Controller.$inject = ['$translate'];
@@ -25,10 +25,10 @@
   function Controller($translate) {
     var vm = this;
 
-    /** controller fields */
+    /** Controller fields */
     vm.languages = ['en', 'es'];
 
-    /** controller methods */
+    /** Controller methods */
     vm.changeLanguage = changeLanguage;
 
     activate();

@@ -3,7 +3,7 @@
   'use strict';
   
   /**
-   * component for sidenav
+   * Component for sidenav
    * @name appSidenav
    * @memberof sidenav
    */
@@ -13,13 +13,13 @@
       controller: Controller,
       controllerAs: 'vm',
       restrict: 'A',
-      templateUrl: 'app/components/sidenav/sidenav.tmpl.html'
+      templateUrl: 'app/components/base/sidenav/sidenav.tmpl.html'
     });
 
   Controller.$inject = ['$location', '$window', 'sideNav'];
 
   /**
-   * controller for sidenav component.
+   * Controller for sidenav component.
    * @name Controller
    * @memberof appSidenav
    * @param {Object} $location - to redirect.
@@ -29,10 +29,10 @@
   function Controller($location, $window, sideNav) {
     var vm = this;
 
-    /** controller fields */
+    /** Controller fields */
     vm.sidenav = sideNav;
 
-    /** controller methods */
+    /** Controller methods */
     vm.goToLink = goToLink;
     vm.toggle = toggle;
 

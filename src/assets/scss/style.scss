@@ -44,10 +44,10 @@
 /**
  * Components
  */
-@import "../../app/components/header/header.scss";
+@import "../../app/components/base/header/header.scss";
+@import "../../app/components/base/sidenav/sidenav.scss";
 @import "../../app/components/help/help.scss";
 @import "../../app/components/home/home.scss";
-@import "../../app/components/sidenav/sidenav.scss";
  
 /**
  * Abstractions and objects

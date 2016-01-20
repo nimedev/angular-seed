@@ -3,7 +3,7 @@
   'use strict';
 
   /**
-   * header directive
+   * Header directive
    * @name appHeader
    * @memberof header
    */
@@ -13,13 +13,13 @@
       controller: Controller,
       controllerAs: 'vm',
       restrict: 'A',
-      templateUrl: 'app/components/header/header.tmpl.html'
+      templateUrl: 'app/components/base/header/header.tmpl.html'
     });
 
   Controller.$inject = ['headerNav', 'sideNav'];
 
   /**
-   * controller for header component.
+   * Controller for header component.
    * @name Controller
    * @memberof appHeader
    * @param {Object} headerNav - to toggle header-nav visibility.
@@ -28,27 +28,27 @@
   function Controller(headerNav, sideNav) {
     var vm = this;
 
-    /** controller fields */
+    /** Controller fields */
     vm.headerNav = headerNav;
 
-    /** controller methods */
+    /** Controller methods */
     vm.toggleHeaderNav = toggleHeaderNav;
     vm.toggleSidenav = toggleSidenav;
 
     activate();
 
     ////////////
-    /** init function */
+    /** Init function */
     function activate() {
 
     }
     
-    /** toggle header nav visibility */
+    /** Toggle header nav visibility */
     function toggleHeaderNav() {
       headerNav.toggle();
     }
     
-    /** toggle sidenav visibility */
+    /** Toggle sidenav visibility */
     function toggleSidenav() {
       sideNav.toggle();
     }
