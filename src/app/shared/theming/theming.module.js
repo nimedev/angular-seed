@@ -20,6 +20,6 @@
     $mdThemingProvider.theme('default')
     /** default: 500, hue-1: 300, hue-2: 800, hue-3: A100 */
       .primaryPalette('grey')
-      .accentPalette('lime');
+      .accentPalette('deep-orange');
   }
 })();

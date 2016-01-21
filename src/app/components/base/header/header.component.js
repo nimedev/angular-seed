@@ -3,7 +3,7 @@
   'use strict';
 
   /**
-   * Header directive
+   * Header component
    * @name appHeader
    * @memberof header
    */
