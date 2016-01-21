@@ -1,14 +1,14 @@
 <div class="header__wrapper">
-  <md-button class="menu-btn md-icon-button" ng-click="vm.toggleSidenav()" aria-label="Menu">
+  <md-button class="menu-btn md-icon-button" ng-click="$ctrl.toggleSidenav()" aria-label="Menu">
     <md-icon>menu</md-icon>
   </md-button>
   <a href="/" title="Angular Seed">
     <span class="header__logo">Angular Seed</span>
   </a>
   <span class="space"></span>
-  <md-button class="menu-btn md-icon-button" ng-click="vm.toggleHeaderNav()" aria-label="Notifications">
+  <md-button class="menu-btn md-icon-button" ng-click="$ctrl.toggleHeaderNav()" aria-label="Notifications">
     <md-icon>notifications</md-icon>
   </md-button>
   <lang-list></lang-list>
 </div>
-<nav class="header__nav" ng-class="vm.headerNav.cssClass"></nav>
+<nav class="header__nav" ng-class="$ctrl.headerNav.cssClass"></nav>

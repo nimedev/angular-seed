@@ -3,8 +3,8 @@
     <md-icon md-menu-origin>language</md-icon>
   </md-button>
   <md-menu-content width="4">
-    <md-menu-item ng-repeat="lang in vm.languages">
-      <md-button ng-click="vm.changeLanguage(lang)">
+    <md-menu-item ng-repeat="lang in $ctrl.languages">
+      <md-button ng-click="$ctrl.changeLanguage(lang)">
         {{'HEADER.LANG.' + lang | translate}}
       </md-button>
     </md-menu-item>

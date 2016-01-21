@@ -1,12 +1,11 @@
-/** appHelpView component */
+/**
+ * appHelpView component
+ * @name appHelpView
+ * @memberof help
+ */
 (function () {
   'use strict';
-  
-  /**
-   * Component for about view
-   * @name appHelpView
-   * @memberof help
-   */
+
   angular
     .module('help')
     .component('appHelpView', {

@@ -1,12 +1,11 @@
-/** appHomeView component */
+/**
+ * appHomeView component
+ * @name appHomeView
+ * @memberof home
+ */
 (function () {
   'use strict';
 
-  /**
-   * Component for home view
-   * @name appHomeView
-   * @memberof home
-   */
   angular
     .module('home')
     .component('appHomeView', {

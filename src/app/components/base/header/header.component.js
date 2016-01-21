@@ -1,17 +1,15 @@
-/** appHeader component */
+/**
+ * Header component
+ * @name appHeader
+ * @memberof header
+ */
 (function () {
   'use strict';
 
-  /**
-   * Header component
-   * @name appHeader
-   * @memberof header
-   */
   angular
     .module('header')
     .component('appHeader', {
       controller: Controller,
-      controllerAs: 'vm',
       templateUrl: 'app/components/base/header/header.tmpl.html'
     });
 

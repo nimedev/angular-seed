@@ -1,17 +1,16 @@
-/** langList component. */
+/**
+ * langList component
+ * List of available lenguage.
+ * @name langList
+ * @member of header
+ */
 (function () {
   'use strict';
 
-  /**
-   * List of available lenguage.
-   * @namespace langList
-   */
   angular
     .module('header')
     .component('langList', {
       controller: Controller,
-      controllerAs: 'vm',
-      restrict: 'E',
       templateUrl: 'app/components/base/header/lang-list/lang-list.tmpl.html'
     });
 

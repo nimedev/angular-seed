@@ -1,21 +1,21 @@
-<div class="sidenav-backdrop" ng-class="vm.sidenav.cssClass" ng-click="vm.toggle()"></div>
-<div class="sidenav-content" ng-class="vm.sidenav.cssClass">
+<div class="sidenav-backdrop" ng-class="$ctrl.sidenav.cssClass" ng-click="$ctrl.toggle()"></div>
+<div class="sidenav-content" ng-class="$ctrl.sidenav.cssClass">
   <ul class="menu-content">
     <li>
-      <md-button class="menu-item" ng-click="vm.changeState('home')">
+      <md-button class="menu-item" ng-click="$ctrl.changeState('home')">
         <md-icon class="menu-icon">home</md-icon>
         <span class="menu-text" translate="NAV.HOME"></span>
       </md-button>
     </li>
     <li>
-      <md-button class="menu-item" ng-click="vm.changeState('help')">
+      <md-button class="menu-item" ng-click="$ctrl.changeState('help')">
         <md-icon class="menu-icon">help</md-icon>
         <span class="menu-text" translate="NAV.HELP"></span>
       </md-button>
     </li>
     <div class="divider"></div>
     <li>
-      <md-button class="menu-item" ng-click="vm.changeState('home')">
+      <md-button class="menu-item" ng-click="$ctrl.changeState('home')">
         <md-icon class="menu-icon">settings</md-icon>
         <span class="menu-text" translate="NAV.SETTINGS"></span>
       </md-button>

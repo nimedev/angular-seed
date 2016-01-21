@@ -1,17 +1,15 @@
-/** appSidenav component */
+/**
+ * appSidenav component
+ * @name appSidenav
+ * @memberof sidenav
+ */
 (function () {
   'use strict';
-  
-  /**
-   * Component for sidenav
-   * @name appSidenav
-   * @memberof sidenav
-   */
+
   angular
     .module('sidenav')
     .component('appSidenav', {
       controller: Controller,
-      controllerAs: 'vm',
       templateUrl: 'app/components/base/sidenav/sidenav.tmpl.html'
     });
 
