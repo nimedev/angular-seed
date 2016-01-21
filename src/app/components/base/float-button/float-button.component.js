@@ -1,5 +1,5 @@
 /**
- * FAB button component
+ * Component for main float FAB button.
  * @name floatButton
  * @memberof base
  */

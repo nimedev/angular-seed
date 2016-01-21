@@ -1,5 +1,5 @@
 /**
- * configurationView component
+ * Component for configuration view.
  * @name configurationView
  * @memberof home
  */
@@ -9,6 +9,6 @@
   angular
     .module('home')
     .component('configurationView', {
-      template: 'CONFIG'
+      template: '<coming-soon title="Configuration"></coming-soon>'
     });
 })();
