@@ -10,7 +10,6 @@
   angular
     .module('home')
     .component('appHomeView', {
-      restrict: 'E',
       templateUrl: 'app/components/home/home.tmpl.html'
     });
 })();

@@ -10,7 +10,6 @@
   angular
     .module('help')
     .component('appHelpView', {
-      restrict: 'E',
       templateUrl: 'app/components/help/help.tmpl.html'
     });
 })();

@@ -12,7 +12,6 @@
     .component('appHeader', {
       controller: Controller,
       controllerAs: 'vm',
-      restrict: 'A',
       templateUrl: 'app/components/base/header/header.tmpl.html'
     });
 
