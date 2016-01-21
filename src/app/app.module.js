@@ -31,6 +31,7 @@
       'base',
       
     // Views components
+      'configuration',
       'help',
       'home',
 
