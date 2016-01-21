@@ -170,6 +170,11 @@
       "cdn": "https://cdnjs.cloudflare.com/ajax/libs/angular-translate-handler-log/${ version }/angular-translate-handler-log.min.js"
     },
     {
+      "file": "bower_components/angular-ui-router/release/*.js",
+      "package": "angular-ui-router",
+      "cdn": "https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/${ version }/angular-ui-router.min.js"
+    },
+    {
       "file": "bower_components/satellizer/*.js",
       "package": "satellizer",
       "cdn": "https://cdn.jsdelivr.net/satellizer/${ version }/satellizer.min.js"
