@@ -22,11 +22,11 @@
       'ngCookies',
       'ngMessages',
       'ngResource',
-      'ngRoute',
       'ngSanitize',
 
     // Comunity modules
-
+      'ui.router',
+    
     // Components
       'base',
       
@@ -44,14 +44,11 @@
     .config(config)
     .constant('constants', constants);
     
-    
   /** Config function */
-  config.$inject = ['$routeProvider'];
+  config.$inject = ['$urlRouterProvider'];
 
-  function config($routeProvider) {
+  function config($urlRouterProvider) {
     // Redirect path to * urls
-    $routeProvider.otherwise({
-      redirectTo: '/'
-    });
+    $urlRouterProvider.otherwise('/');
   }
 })();

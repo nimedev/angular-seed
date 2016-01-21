@@ -16,24 +16,24 @@
       templateUrl: 'app/components/base/sidenav/sidenav.tmpl.html'
     });
 
-  Controller.$inject = ['$location', '$window', 'sideNav'];
+  Controller.$inject = ['$state', '$window', 'sideNav'];
 
   /**
    * Controller for sidenav component.
    * @name Controller
    * @memberof appSidenav
-   * @param {Object} $location - to redirect.
+   * @param {Object} $state - to change ui-router state.
    * @param {Object} $window - to get intial size.
    * @param {Object} sideNav - to control open/close of sidenav.
    */
-  function Controller($location, $window, sideNav) {
+  function Controller($state, $window, sideNav) {
     var vm = this;
 
     /** Controller fields */
     vm.sidenav = sideNav;
 
     /** Controller methods */
-    vm.goToLink = goToLink;
+    vm.changeState = changeState;
     vm.toggle = toggle;
 
     activate();
@@ -48,13 +48,13 @@
     }
     
     /**
-     * Go to link
-     * @param {string} path - path to redirect 
+     * Change ui-router state
+     * @param {string} state - state to redirect 
      */
-    function goToLink(path) {
-      if (path) {
-        $location.path(path);
-      }
+    function changeState(state) {
+      $state.go(state);
+      
+      // check if close sidenav (mobile)
       if ($window.innerWidth < sideNav.smBreak) {
         sideNav.close();
       }
