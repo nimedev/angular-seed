@@ -1,49 +1,46 @@
-/** headerNav factory */
+/**
+ * Service to control header-nav visibility.
+ * @name headerNav
+ * @memberof header
+ */
 (function () {
   'use strict';
 
   angular
     .module('header')
-    .factory('headerNav', Service);
+    .service('headerNav', Service);
 
   Service.$inject = [];
-  
-  /**
-   * Function to control header-nav visibility.
-   * @name headerNav
-   * @memberof header
-   */
+
   function Service() {
     var className = 'header__nav-open';
 
-    var service = {
-      // factory fields
-      cssClass: '',
-      
-      // factory functions
-      close: close,
-      open: open,
-      toggle: toggle
-    };
+    var vm = this;
 
-    return service;
+    // service fields
+    vm.cssClass = '';
+      
+    // service methods
+    vm.close= close;
+    vm.open= open;
+    vm.toggle = toggle;
 
     ///////////////
     /** Close header-nav */
     function close() {
-      service.cssClass = '';
+      vm.cssClass = '';
       toggleElements();
     }
     
     /** Open header-nav */
     function open() {
-      service.cssClass = className;
+      vm.cssClass = className;
       toggleElements();
     }
     
     /** Change header-nav visibility */
     function toggle() {
-      if (service.cssClass === '') {
+      if (vm.cssClass === '') {
         open();
       } else {
         close();
@@ -57,7 +54,7 @@
       var sidenav = angular.element(document.querySelector('.app-sidenav'));
       
       // header-nav is closed?
-      if (service.cssClass === '') {
+      if (vm.cssClass === '') {
         body.removeClass(className);
         sidenav.removeClass(className);
       } else {

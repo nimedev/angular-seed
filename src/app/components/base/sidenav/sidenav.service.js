@@ -1,51 +1,48 @@
-/** sideNav factory */
+/**
+ * Service to control sidenav component.
+ * @name sideNav
+ * @memberof sidenav
+ */
 (function () {
   'use strict';
 
   angular
     .module('sidenav')
-    .factory('sideNav', Service);
+    .service('sideNav', Service);
 
   Service.$inject = [];
-  
-  /**
-   * Function to control sidenav component.
-   * @name sideNav
-   * @memberof sidenav
-   */
+
   function Service() {
     var className = 'nav-open';
-    
-    var service = {
-      // factory fields
-      cssClass: '',
-      smBreak: 600,
-      mdBreak: 960,
-      
-      // factory functions
-      close: close,
-      open: open,
-      toggle: toggle
-    };
 
-    return service;
+    var vm = this;
+
+    // service fields
+    vm.cssClass = '';
+    vm.smBreak = 600;
+    vm.mdBreak = 960;
+      
+    // service methods
+    vm.close = close;
+    vm.open = open;
+    vm.toggle = toggle;
 
     ///////////////
     /** Close sidenav */
     function close() {
-      service.cssClass = '';
+      vm.cssClass = '';
       toggleElements();
     }
     
     /** Open sidenav */
     function open() {
-      service.cssClass = className;
+      vm.cssClass = className;
       toggleElements();
     }
     
     /** Change sidenav visibility */
     function toggle() {
-      if (service.cssClass === '') {
+      if (vm.cssClass === '') {
         open();
       } else {
         close();
@@ -59,7 +56,7 @@
       var element = angular.element(document.querySelector('.app-body'));
       
       // sidenav is closed?
-      if (service.cssClass === '') {
+      if (vm.cssClass === '') {
         body.removeClass(className);
         element.removeClass(className);
       } else {
