@@ -58,10 +58,11 @@
         ],
         "dest": "dist/assets/js",
         "watch": [
-          "src/app/**/*.js",
-          "src/app/**/*.html",
-          "src/assets/i18n/**/*.js",
-          "src/assets/js/**/*.js"
+          "src/app/**/*",
+          "src/assets/i18n/**/*",
+          "src/assets/js/**/*",
+          "!src/app/**/*.scss",
+          "!src/assets/i18n/**/*.json"
         ]
       },
       "styles": {
@@ -69,8 +70,11 @@
         "src": "src/assets/scss/style.scss",
         "dest": "dist/assets/css",
         "watch": [
-          "src/app/**/*.scss",
-          "src/assets/scss/**/*"
+          "src/app/**/*",
+          "src/assets/scss/**/*",
+          "!src/app/**/*.js",
+          "!src/app/**/*.html",
+          "!src/app/**/*.json"
         ]
       },
       "templates": {
