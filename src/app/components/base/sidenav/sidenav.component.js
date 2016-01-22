@@ -1,5 +1,5 @@
 /**
- * appSidenav component
+ * Component for side navigation menu
  * @name appSidenav
  * @memberof sidenav
  */

@@ -15,7 +15,14 @@
     $stateProvider
       .state(moduleName, {
         url: '/configuration',
-        template: '<configuration-view></configuration-view>'
+        views: {
+          'sidenav': {
+            template: '<config-sidenav></config-sidenav>'
+          },
+          'app-content': {
+            template: '<configuration-view></configuration-view>'
+          }
+        }
       });
   }
 })();

@@ -2,6 +2,8 @@
  * Service to control sidenav component.
  * @name sideNav
  * @memberof sidenav
+ * @param {Object} $state - to change ui-router state.
+ * @param {Object} $window - to get intial size.
  */
 (function () {
   'use strict';
@@ -10,9 +12,9 @@
     .module('sidenav')
     .service('sideNav', Service);
 
-  Service.$inject = [];
+  Service.$inject = ['$state', '$window'];
 
-  function Service() {
+  function Service($state, $window) {
     var className = 'nav-open';
 
     var vm = this;
@@ -23,11 +25,25 @@
     vm.mdBreak = 960;
       
     // service methods
+    vm.changeState = changeState;
     vm.close = close;
     vm.open = open;
     vm.toggle = toggle;
 
     ///////////////
+    /**
+     * Change ui-router state
+     * @param {string} state - state to redirect 
+     */
+    function changeState(state) {
+      $state.go(state);
+      
+      // check if close sidenav (mobile)
+      if ($window.innerWidth < vm.smBreak) {
+        vm.close();
+      }
+    }
+    
     /** Close sidenav */
     function close() {
       vm.cssClass = '';

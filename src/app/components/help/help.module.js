@@ -15,7 +15,14 @@
     $stateProvider
       .state(moduleName, {
         url: '/help',
-        template: '<app-help-view></app-help-view>'
+        views: {
+          'sidenav': {
+            template: '<home-sidenav></home-sidenav>'
+          },
+          'app-content': {
+            template: '<app-help-view></app-help-view>'
+          }
+        }
       });
   }
 })();

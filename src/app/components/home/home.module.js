@@ -15,7 +15,14 @@
     $stateProvider
       .state(moduleName, {
         url: '/',
-        template: '<app-home-view></app-home-view>'
+        views: {
+          'sidenav': {
+            template: '<home-sidenav></home-sidenav>'
+          },
+          'app-content': {
+            template: '<app-home-view></app-home-view>'
+          }
+        }
       });
   }
 })();
