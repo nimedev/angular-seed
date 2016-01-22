@@ -40,7 +40,7 @@
       
       // check if close sidenav (mobile)
       if ($window.innerWidth < vm.smBreak) {
-        vm.close();
+        close();
       }
     }
     
