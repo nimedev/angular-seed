@@ -9,6 +9,6 @@
   angular
     .module('home')
     .component('configurationView', {
-      template: '<coming-soon title="Configuration"></coming-soon>'
+      template: '<coming-soon class="config-view" title="Configuration"></coming-soon>'
     });
 })();
